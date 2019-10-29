@@ -13,9 +13,6 @@ public class Main {
                                                         // Things to do is make those function separate part by part.
     // Variable declaration:
 
-    // hhhhhhh
-
-
         private static int A  = 0, numberForConvert;
         private static int B = 0;
         private static float Radian = 0;
