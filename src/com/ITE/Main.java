@@ -10,7 +10,7 @@ import static java.lang.Integer.*;
  * @author Dyly TithSambath
  */
 public class Main {
-                                                        // Things to do is make those function separate part by part.
+                                                        // Thing need to be done is add case 2 convert from Octal to any other system
     // Variable declaration:
 
         private static int A  = 0, numberForConvert;
@@ -19,7 +19,7 @@ public class Main {
         private static int Degree = 0;
         private static double Answer,Base = 0;
         private static long answer, base = 0;
-        private static String Number;
+        private static String value_as_string;
 
     // Create an object of another class for use:(import class)
         static Scanner scan = new Scanner(System.in);
@@ -169,7 +169,11 @@ public class Main {
             }
         }
 
-
+        static void calledNumberSystemConverter(int mainOption, int subMenuOption){
+            switch (mainOption) {
+                case 1: Binary(subMenuOption);
+            }
+        }
 
     // Create function Menu display:
 
@@ -177,17 +181,20 @@ public class Main {
      * This Method is use to print out Menu on console output and let user input there option here.
      */
     static void createMenu () {
+    // Menu Display
         System.out.println("OPERATOR MENU: ");
         System.out.println("    1. Arithmetic Operator");
         System.out.println("    2. Trigonometric Operator");
         System.out.println("    3. Bitwise Operation");
         System.out.println("    4. Storage Converter");
-        // ask user option:
+        System.out.println("    5. Number System Conversion");
+
+    // Ask user option:
         System.out.println("Enter your option here: ");
         int MenuOption = 0;
         int FunctionOption = 0;
-        //Scanner scan = new Scanner(System.in);// create an object scan from class scanner.
-        MenuOption = scan.nextInt();
+
+        MenuOption = scan.nextInt(); // let user input their option.
 
         switch (MenuOption){
             case 1: System.out.println("Arithmetic Operator: ");
@@ -231,18 +238,28 @@ public class Main {
                     System.out.println("    6. Petabyte");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
-                    storageConverterMenu(FunctionOption);
+                    storageConverterSubMenu(FunctionOption);
                     break;
-            case 5:
-                    Number = numberSystemConversion.Octal2Binary(11);
-                    System.out.println(Number);
-                    Number = numberSystemConversion.Octal2Hex(11);
-                    System.out.println(Number);
+            case 5: System.out.println("Number System Conversion: ");
+                    System.out.println("    1. Binary");
+                    System.out.println("        A. Binary to Octal");
+                    System.out.println("        B. Binary to Decimal");
+                    System.out.println("        C. Binary to Hexadecimal");
+                    System.out.println("    2. Octal");
+                    System.out.println("Enter your option here: ");
+                    FunctionOption = scan.nextInt();
+                    numberSystemConversionSubMenu(FunctionOption);
 
 
         }
     }
-    static void storageConverterMenu(int option){
+
+    /**
+     * This storageConverterSubMenu have ability to find option that Match it
+     * then display its sub Menu.
+     * @param option is user option that pass from CreateMenu() in case 4.
+     */
+    static void storageConverterSubMenu(int option){
         int convertOption;
         switch (option){
             case 1: System.out.println("Byte:");
@@ -307,300 +324,344 @@ public class Main {
                     break;
         }
     }
-    static void Byte (int convertOption){
-        switch (convertOption){
-            case 1: System.out.println("    Byte To Kilobyte: ");
-                    System.out.println("\nEnter Number of Byte here : ");
+    static void numberSystemConversionSubMenu(int mainOption){
+        int subMenuOption;
+        switch (mainOption){
+            case 1: System.out.println("Binary: ");
+                    System.out.println("    1.  Binary to Octal");
+                    System.out.println("    2.  Binary to Decimal");
+                    System.out.println("    3.  Binary to Hexadecimal");
+                    subMenuOption = scan.nextInt();
+                    calledNumberSystemConverter(mainOption,subMenuOption);
+
+
+        }
+    }
+
+    /*
+        All this function below is use to receive an answer from specific function operation (From another class)
+     */
+        static void Byte (int convertOption){
+            switch (convertOption){
+                case 1: System.out.println("    Byte To Kilobyte: ");
+                        System.out.println("\nEnter Number of Byte here : ");
+                        numberForConvert = scan.nextInt();
+                        Answer = storageConverter.byte2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                        System.out.print(numberForConvert);
+                        System.out.print(" byte = ");
+                        System.out.print(Answer);
+                        System.out.print(" KB");
+                        break;
+                case 2: System.out.println("    Byte To Megabyte: ");
+                        System.out.println("\nEnter Number of Byte here : ");
+                        numberForConvert = scan.nextInt();
+                        Answer = storageConverter.byte2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                        System.out.print(numberForConvert);
+                        System.out.print(" byte = ");
+                        System.out.print(Answer);
+                        System.out.print(" MB");
+                        break;
+                case 3: System.out.println("    Byte To Gigabyte: ");
+                        System.out.println("\nEnter Number of Byte here : ");
+                        numberForConvert = scan.nextInt();
+                        Answer = storageConverter.byte2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                        System.out.print(numberForConvert);
+                        System.out.print(" byte = ");
+                        System.out.print(Answer);
+                        System.out.print(" GB");
+                        break;
+                case 4: System.out.println("    Byte To Terabyte: ");
+                        System.out.println("\nEnter Number of Byte here : ");
+                        numberForConvert = scan.nextInt();
+                        Answer = storageConverter.byte2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                        System.out.print(numberForConvert);
+                        System.out.print(" byte = ");
+                        System.out.print(Answer);
+                        System.out.print(" TB");
+                        break;
+                case 5: System.out.println("    Byte To Petabyte: ");
+                        System.out.println("\nEnter Number of Byte here : ");
+                        numberForConvert = scan.nextInt();
+                        Answer = storageConverter.byte2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                        System.out.print(numberForConvert);
+                        System.out.print(" byte = ");
+                        System.out.print(Answer);
+                        System.out.print(" PB");
+                        break;
+            }
+        }
+        static void Kilobyte (int convertOption){
+            switch (convertOption){
+                case 1: System.out.println("    Kilobyte To Byte: ");
+                    System.out.println("\nEnter Number of Kilobyte here : ");
                     numberForConvert = scan.nextInt();
-                    Answer = storageConverter.byte2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    Answer = storageConverter.kb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
                     System.out.print(numberForConvert);
-                    System.out.print(" byte = ");
+                    System.out.print(" KB = ");
                     System.out.print(Answer);
-                    System.out.print(" KB");
+                    System.out.print(" Byte");
                     break;
-            case 2: System.out.println("    Byte To Megabyte: ");
-                    System.out.println("\nEnter Number of Byte here : ");
+                case 2: System.out.println("    Kilobyte To Megabyte: ");
+                    System.out.println("\nEnter Number of Kilobyte here : ");
                     numberForConvert = scan.nextInt();
-                    Answer = storageConverter.byte2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    Answer = storageConverter.kb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
                     System.out.print(numberForConvert);
-                    System.out.print(" byte = ");
+                    System.out.print(" KB = ");
                     System.out.print(Answer);
                     System.out.print(" MB");
                     break;
-            case 3: System.out.println("    Byte To Gigabyte: ");
-                    System.out.println("\nEnter Number of Byte here : ");
+                case 3: System.out.println("    Kilobyte To Gigabyte: ");
+                    System.out.println("\nEnter Number of Kilobyte here : ");
                     numberForConvert = scan.nextInt();
-                    Answer = storageConverter.byte2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    Answer = storageConverter.kb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
                     System.out.print(numberForConvert);
-                    System.out.print(" byte = ");
+                    System.out.print(" KB = ");
                     System.out.print(Answer);
                     System.out.print(" GB");
                     break;
-            case 4: System.out.println("    Byte To Terabyte: ");
-                    System.out.println("\nEnter Number of Byte here : ");
+                case 4: System.out.println("    Kilobyte To Terabyte: ");
+                    System.out.println("\nEnter Number of Kilobyte here : ");
                     numberForConvert = scan.nextInt();
-                    Answer = storageConverter.byte2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    Answer = storageConverter.kb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
                     System.out.print(numberForConvert);
-                    System.out.print(" byte = ");
+                    System.out.print(" KB = ");
                     System.out.print(Answer);
                     System.out.print(" TB");
                     break;
-            case 5: System.out.println("    Byte To Petabyte: ");
-                    System.out.println("\nEnter Number of Byte here : ");
+                case 5: System.out.println("    Kilobyte To Petabyte: ");
+                    System.out.println("\nEnter Number of Kilobyte here : ");
                     numberForConvert = scan.nextInt();
-                    Answer = storageConverter.byte2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    Answer = storageConverter.kb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
                     System.out.print(numberForConvert);
-                    System.out.print(" byte = ");
+                    System.out.print(" KB = ");
                     System.out.print(Answer);
                     System.out.print(" PB");
                     break;
+            }
         }
-    }
-    static void Kilobyte (int convertOption){
-        switch (convertOption){
-            case 1: System.out.println("    Kilobyte To Byte: ");
-                System.out.println("\nEnter Number of Kilobyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.kb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" KB = ");
-                System.out.print(Answer);
-                System.out.print(" Byte");
-                break;
-            case 2: System.out.println("    Kilobyte To Megabyte: ");
-                System.out.println("\nEnter Number of Kilobyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.kb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" KB = ");
-                System.out.print(Answer);
-                System.out.print(" MB");
-                break;
-            case 3: System.out.println("    Kilobyte To Gigabyte: ");
-                System.out.println("\nEnter Number of Kilobyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.kb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" KB = ");
-                System.out.print(Answer);
-                System.out.print(" GB");
-                break;
-            case 4: System.out.println("    Kilobyte To Terabyte: ");
-                System.out.println("\nEnter Number of Kilobyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.kb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" KB = ");
-                System.out.print(Answer);
-                System.out.print(" TB");
-                break;
-            case 5: System.out.println("    Kilobyte To Petabyte: ");
-                System.out.println("\nEnter Number of Kilobyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.kb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" KB = ");
-                System.out.print(Answer);
-                System.out.print(" PB");
-                break;
+        static void Megabyte (int convertOption){
+            switch (convertOption){
+                case 1: System.out.println("    Megabyte To Byte: ");
+                    System.out.println("\nEnter Number of Megabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.mb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" MB = ");
+                    System.out.print(Answer);
+                    System.out.print(" Byte");
+                    break;
+                case 2: System.out.println("    Megabyte To Kilobyte: ");
+                    System.out.println("\nEnter Number of Megabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.mb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" MB = ");
+                    System.out.print(Answer);
+                    System.out.print(" KB");
+                    break;
+                case 3: System.out.println("    Megabyte To Gigabyte: ");
+                    System.out.println("\nEnter Number of Megabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.mb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" MB = ");
+                    System.out.print(Answer);
+                    System.out.print(" GB");
+                    break;
+                case 4: System.out.println("    Megabyte To Terabyte: ");
+                    System.out.println("\nEnter Number of Megabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.mb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" MB = ");
+                    System.out.print(Answer);
+                    System.out.print(" TB");
+                    break;
+                case 5: System.out.println("    Megabyte To Petabyte: ");
+                    System.out.println("\nEnter Number of Megabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.mb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" MB = ");
+                    System.out.print(Answer);
+                    System.out.print(" PB");
+                    break;
+            }
         }
-    }
-    static void Megabyte (int convertOption){
-        switch (convertOption){
-            case 1: System.out.println("    Megabyte To Byte: ");
-                System.out.println("\nEnter Number of Megabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.mb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" MB = ");
-                System.out.print(Answer);
-                System.out.print(" Byte");
-                break;
-            case 2: System.out.println("    Megabyte To Kilobyte: ");
-                System.out.println("\nEnter Number of Megabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.mb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" MB = ");
-                System.out.print(Answer);
-                System.out.print(" KB");
-                break;
-            case 3: System.out.println("    Megabyte To Gigabyte: ");
-                System.out.println("\nEnter Number of Megabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.mb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" MB = ");
-                System.out.print(Answer);
-                System.out.print(" GB");
-                break;
-            case 4: System.out.println("    Megabyte To Terabyte: ");
-                System.out.println("\nEnter Number of Megabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.mb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" MB = ");
-                System.out.print(Answer);
-                System.out.print(" TB");
-                break;
-            case 5: System.out.println("    Megabyte To Petabyte: ");
-                System.out.println("\nEnter Number of Megabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.mb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" MB = ");
-                System.out.print(Answer);
-                System.out.print(" PB");
-                break;
+        static void Gigabyte (int convertOption){
+            switch (convertOption){
+                case 1: System.out.println("    Gigabyte To Byte: ");
+                    System.out.println("\nEnter Number of Gigabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.gb2byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" GB = ");
+                    System.out.print(Answer);
+                    System.out.print(" Byte");
+                    break;
+                case 2: System.out.println("     Gigabyte To Kilobyte: ");
+                    System.out.println("\nEnter Number of Gigabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.gb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" GB = ");
+                    System.out.print(Answer);
+                    System.out.print(" KB");
+                    break;
+                case 3: System.out.println("     Gigabyte To Megabyte: ");
+                    System.out.println("\nEnter Number of  Gigabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.gb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" GB = ");
+                    System.out.print(Answer);
+                    System.out.print(" MB");
+                    break;
+                case 4: System.out.println("     Gigabyte To Terabyte: ");
+                    System.out.println("\nEnter Number of Gigabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.gb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" GB = ");
+                    System.out.print(Answer);
+                    System.out.print(" TB");
+                    break;
+                case 5: System.out.println("     Gigabyte To Petabyte: ");
+                    System.out.println("\nEnter Number of  Gigabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.gb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" GB = ");
+                    System.out.print(Answer);
+                    System.out.print(" PB");
+                    break;
+            }
         }
-    }
-    static void Gigabyte (int convertOption){
-        switch (convertOption){
-            case 1: System.out.println("    Gigabyte To Byte: ");
-                System.out.println("\nEnter Number of Gigabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.gb2byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" GB = ");
-                System.out.print(Answer);
-                System.out.print(" Byte");
-                break;
-            case 2: System.out.println("     Gigabyte To Kilobyte: ");
-                System.out.println("\nEnter Number of Gigabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.gb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" GB = ");
-                System.out.print(Answer);
-                System.out.print(" KB");
-                break;
-            case 3: System.out.println("     Gigabyte To Megabyte: ");
-                System.out.println("\nEnter Number of  Gigabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.gb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" GB = ");
-                System.out.print(Answer);
-                System.out.print(" MB");
-                break;
-            case 4: System.out.println("     Gigabyte To Terabyte: ");
-                System.out.println("\nEnter Number of Gigabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.gb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" GB = ");
-                System.out.print(Answer);
-                System.out.print(" TB");
-                break;
-            case 5: System.out.println("     Gigabyte To Petabyte: ");
-                System.out.println("\nEnter Number of  Gigabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.gb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" GB = ");
-                System.out.print(Answer);
-                System.out.print(" PB");
-                break;
+        static void Terabyte (int convertOption){
+            switch (convertOption){
+                case 1: System.out.println("    Terabyte To Byte: ");
+                    System.out.println("\nEnter Number of Terabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.tb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" TB = ");
+                    System.out.print(Answer);
+                    System.out.print(" Byte");
+                    break;
+                case 2: System.out.println("     Terabyte To Kilobyte: ");
+                    System.out.println("\nEnter Number of Terabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.tb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" TB = ");
+                    System.out.print(Answer);
+                    System.out.print(" KB");
+                    break;
+                case 3: System.out.println("     Terabyte To Megabyte: ");
+                    System.out.println("\nEnter Number of  Terabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.tb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" TB = ");
+                    System.out.print(Answer);
+                    System.out.print(" MB");
+                    break;
+                case 4: System.out.println("     Terabyte To Gigabyte: ");
+                    System.out.println("\nEnter Number of Terabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.tb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" TB = ");
+                    System.out.print(Answer);
+                    System.out.print(" GB");
+                    break;
+                case 5: System.out.println("     Terabyte To Petabyte: ");
+                    System.out.println("\nEnter Number of  Terabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.tb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" TB = ");
+                    System.out.print(Answer);
+                    System.out.print(" PB");
+                    break;
+            }
         }
-    }
-    static void Terabyte (int convertOption){
-        switch (convertOption){
-            case 1: System.out.println("    Terabyte To Byte: ");
-                System.out.println("\nEnter Number of Terabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.tb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" TB = ");
-                System.out.print(Answer);
-                System.out.print(" Byte");
-                break;
-            case 2: System.out.println("     Terabyte To Kilobyte: ");
-                System.out.println("\nEnter Number of Terabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.tb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" TB = ");
-                System.out.print(Answer);
-                System.out.print(" KB");
-                break;
-            case 3: System.out.println("     Terabyte To Megabyte: ");
-                System.out.println("\nEnter Number of  Terabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.tb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" TB = ");
-                System.out.print(Answer);
-                System.out.print(" MB");
-                break;
-            case 4: System.out.println("     Terabyte To Gigabyte: ");
-                System.out.println("\nEnter Number of Terabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.tb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" TB = ");
-                System.out.print(Answer);
-                System.out.print(" GB");
-                break;
-            case 5: System.out.println("     Terabyte To Petabyte: ");
-                System.out.println("\nEnter Number of  Terabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.tb2PB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" TB = ");
-                System.out.print(Answer);
-                System.out.print(" PB");
-                break;
+        static void Petabyte (int convertOption){
+            switch (convertOption){
+                case 1: System.out.println("    Petabyte To Byte: ");
+                    System.out.println("\nEnter Number of Petabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.pb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" PB = ");
+                    System.out.print(Answer);
+                    System.out.print(" Byte");
+                    break;
+                case 2: System.out.println("     Petabyte To Kilobyte: ");
+                    System.out.println("\nEnter Number of Petabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.pb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" PB = ");
+                    System.out.print(Answer);
+                    System.out.print(" KB");
+                    break;
+                case 3: System.out.println("     Petabyte To Megabyte: ");
+                    System.out.println("\nEnter Number of  Petabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.pb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" PB = ");
+                    System.out.print(Answer);
+                    System.out.print(" MB");
+                    break;
+                case 4: System.out.println("     Petabyte To Gigabyte: ");
+                    System.out.println("\nEnter Number of Petabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.pb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" PB = ");
+                    System.out.print(Answer);
+                    System.out.print(" GB");
+                    break;
+                case 5: System.out.println("     Petabyte To Terabyte: ");
+                    System.out.println("\nEnter Number of  Petabyte here : ");
+                    numberForConvert = scan.nextInt();
+                    Answer = storageConverter.pb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
+                    System.out.print(numberForConvert);
+                    System.out.print(" PB = ");
+                    System.out.print(Answer);
+                    System.out.print(" TB");
+                    break;
+            }
         }
-    }
-    static void Petabyte (int convertOption){
-        switch (convertOption){
-            case 1: System.out.println("    Petabyte To Byte: ");
-                System.out.println("\nEnter Number of Petabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.pb2Byte(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" PB = ");
-                System.out.print(Answer);
-                System.out.print(" Byte");
-                break;
-            case 2: System.out.println("     Petabyte To Kilobyte: ");
-                System.out.println("\nEnter Number of Petabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.pb2KB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" PB = ");
-                System.out.print(Answer);
-                System.out.print(" KB");
-                break;
-            case 3: System.out.println("     Petabyte To Megabyte: ");
-                System.out.println("\nEnter Number of  Petabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.pb2MB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" PB = ");
-                System.out.print(Answer);
-                System.out.print(" MB");
-                break;
-            case 4: System.out.println("     Petabyte To Gigabyte: ");
-                System.out.println("\nEnter Number of Petabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.pb2GB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" PB = ");
-                System.out.print(Answer);
-                System.out.print(" GB");
-                break;
-            case 5: System.out.println("     Petabyte To Terabyte: ");
-                System.out.println("\nEnter Number of  Petabyte here : ");
-                numberForConvert = scan.nextInt();
-                Answer = storageConverter.pb2TB(numberForConvert); // use Answer as double to store coz some value that return is small than 1.
-                System.out.print(numberForConvert);
-                System.out.print(" PB = ");
-                System.out.print(Answer);
-                System.out.print(" TB");
-                break;
+
+        static void Binary (int convertOption){
+            int value;
+            switch (convertOption){
+                case 1: System.out.println("      Binary to Octal");
+                        System.out.println("Enter number of Binary here: ");
+                        value = scan.nextInt();
+                        value_as_string = numberSystemConversion.binary2Octal(value);
+                        System.out.print(value);
+                        System.out.print(" = ");
+                        System.out.println(value_as_string);
+                case 2: System.out.println("      Binary to Decimal");
+                        System.out.println("Enter number of Binary here: ");
+                        value = scan.nextInt();
+                        value_as_string = numberSystemConversion.binary2Decimal(value);
+                        System.out.print(value);
+                        System.out.print(" = ");
+                        System.out.println(value_as_string);
+                case 3: System.out.println("   Binary to Hexadecimal");
+                        System.out.println("Enter number of Binary here: ");
+                        value = scan.nextInt();
+                        value_as_string = numberSystemConversion.binary2Hexadecimal(value);
+                        System.out.print(value);
+                        System.out.print(" = ");
+                        System.out.println(value_as_string);
+            }
         }
-    }
 
     /**
      * This function is use to go back to Menu or close program.
@@ -618,8 +679,11 @@ public class Main {
 
 
         System.out.println("                        Welcome to ITE-Calculator"); // Label
+
             createMenu(); // display Menu and do process.
+
         // This do while use to call createMenu again and again until user want to stop.
+
             int decision; // user decision;
             do {
                 System.out.println("\n Press 1 to back to Menu and Press any key to close program: ");
