@@ -10,7 +10,7 @@ import static java.lang.Integer.*;
  * @author Dyly TithSambath
  */
 public class Main {
-                                                        // Thing need to be done is add case 2 convert from Octal to any other system
+
     // Variable declaration:
 
         private static int A  = 0, numberForConvert;
@@ -171,7 +171,8 @@ public class Main {
 
         static void calledNumberSystemConverter(int mainOption, int subMenuOption){
             switch (mainOption) {
-                case 1: Binary(subMenuOption);
+                case 1: Binary(subMenuOption);break;
+                case 2: Octal(subMenuOption);break;
             }
         }
 
@@ -242,9 +243,6 @@ public class Main {
                     break;
             case 5: System.out.println("Number System Conversion: ");
                     System.out.println("    1. Binary");
-                    System.out.println("        A. Binary to Octal");
-                    System.out.println("        B. Binary to Decimal");
-                    System.out.println("        C. Binary to Hexadecimal");
                     System.out.println("    2. Octal");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
@@ -333,14 +331,21 @@ public class Main {
                     System.out.println("    3.  Binary to Hexadecimal");
                     subMenuOption = scan.nextInt();
                     calledNumberSystemConverter(mainOption,subMenuOption);
-
-
+                    break;
+            case 2: System.out.println("Octal: ");
+                    System.out.println("    1.  Octal to Binary");
+                    System.out.println("    2.  Octal to Decimal");
+                    System.out.println("    3.  Octal to Hexadecimal");
+                    subMenuOption = scan.nextInt();
+                    calledNumberSystemConverter(mainOption,subMenuOption);
+                    break;
         }
     }
 
     /*
         All this function below is use to receive an answer from specific function operation (From another class)
      */
+        // Bitwise Operator:
         static void Byte (int convertOption){
             switch (convertOption){
                 case 1: System.out.println("    Byte To Kilobyte: ");
@@ -635,7 +640,7 @@ public class Main {
                     break;
             }
         }
-
+        // Number system conversion:
         static void Binary (int convertOption){
             int value;
             switch (convertOption){
@@ -646,6 +651,7 @@ public class Main {
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.println(value_as_string);
+                        break;
                 case 2: System.out.println("      Binary to Decimal");
                         System.out.println("Enter number of Binary here: ");
                         value = scan.nextInt();
@@ -653,6 +659,7 @@ public class Main {
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.println(value_as_string);
+                        break;
                 case 3: System.out.println("   Binary to Hexadecimal");
                         System.out.println("Enter number of Binary here: ");
                         value = scan.nextInt();
@@ -660,6 +667,37 @@ public class Main {
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.println(value_as_string);
+                        break;
+            }
+        }
+        static void Octal (int convertOption){
+            int value;
+            switch (convertOption){
+                case 1: System.out.println("      Octal to Binary: ");
+                        System.out.println("Enter number of Octal here: ");
+                        value = scan.nextInt();
+                        value_as_string = numberSystemConversion.Octal2Binary(value);
+                        System.out.print(value);
+                        System.out.print(" = ");
+                        System.out.print(value_as_string);
+                        break;
+                case 2: System.out.println("      Octal to Decimal: ");
+                        System.out.println("Enter number of Octal here: ");
+                        value = scan.nextInt();
+                        value_as_string = numberSystemConversion.Octal2Decimal(value);
+                        System.out.print(value);
+                        System.out.print(" = ");
+                        System.out.print(value_as_string);
+                        break;
+                case 3: System.out.println("    Octal to Hexadecimal: ");
+                        System.out.println("Enter number of Octal here: ");
+                        value = scan.nextInt();
+                        value_as_string = numberSystemConversion.Octal2Hexadecimal(value);
+                        System.out.print(value);
+                        System.out.print(" = ");
+                        System.out.print(value_as_string);
+                        break;
+
             }
         }
 
