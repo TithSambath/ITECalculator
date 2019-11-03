@@ -25,17 +25,23 @@ public class NumberSystemConversion {
                to convert all any number system to decimal then convert it to
                what user number system want.
      */
-
+// Binary number system conversion:
     /**
      * This binary2Decimal is use to convert from Binary system to Decimal system.
      * @param binary take user input as a binary system.(only 0 and 1)
      * @return value of decimal as string.
      */
     String binary2Decimal (int binary){
-        String binary_as_string = Integer.toString(binary);
-        int Decimal_as_number = Integer.parseInt(binary_as_string,2);
-        String Decimal_as_string = Integer.toString(Decimal_as_number);
-        return Decimal_as_string;
+        //if(binary % 10 == 0 || binary % 10 == 1){
+        try{
+            String binary_as_string = Integer.toString(binary);
+            int Decimal_as_number = Integer.parseInt(binary_as_string,2);
+
+            String Decimal_as_string = Integer.toString(Decimal_as_number);
+            return Decimal_as_string;
+        }catch(Exception exception){
+            return "Invalid number";
+        }
     }
 
     /**
@@ -44,10 +50,14 @@ public class NumberSystemConversion {
      * @return value of Octal as string.
      */
     String binary2Octal (int binary){
-        String Decimal_as_string = binary2Decimal(binary);
-        int Decimal_as_number = Integer.parseInt(Decimal_as_string,10);
-        String Octal_as_string = Integer.toOctalString(Decimal_as_number);
-        return Octal_as_string;
+        try{
+            String Decimal_as_string = binary2Decimal(binary);
+            int Decimal_as_number = Integer.parseInt(Decimal_as_string,10);
+            String Octal_as_string = Integer.toOctalString(Decimal_as_number);
+            return Octal_as_string;
+        }catch (Exception exception){
+            return "Invalid number";
+        }
     }
 
     /**
@@ -56,21 +66,30 @@ public class NumberSystemConversion {
      * @return value of Hexadecimal as string.
      */
     String binary2Hexadecimal (int binary){
-        String Decimal_as_string = binary2Decimal(binary);
-        int Decimal_as_number = Integer.parseInt(Decimal_as_string);
-        String  Hexadecimal_as_string = Integer.toHexString(Decimal_as_number);
-        return Hexadecimal_as_string;
+        try{
+            String Decimal_as_string = binary2Decimal(binary);
+            int Decimal_as_number = Integer.parseInt(Decimal_as_string);
+            String  Hexadecimal_as_string = Integer.toHexString(Decimal_as_number);
+            return Hexadecimal_as_string;
+        }catch (Exception exception){
+            return "Invalid number";
+        }
     }
 
+// Octal number system conversion:
     /**
      * This Octal2Decimal is use to convert from octal system to decimal system.
      * @param Octal take user input as a octal sytem.
      * @return value of Decimal as string.
      */
     String Octal2Decimal (int Octal){
-        String octal_as_string = Integer.toString(Octal);
-        String Decimal_as_string = Integer.toString(Integer.parseInt(octal_as_string,8));
-        return Decimal_as_string;
+        try{
+            String octal_as_string = Integer.toString(Octal);
+            String Decimal_as_string = Integer.toString(Integer.parseInt(octal_as_string,8));
+            return Decimal_as_string;
+        }catch (Exception exception){
+            return "Invalid number";
+        }
     }
 
     /**
@@ -79,10 +98,14 @@ public class NumberSystemConversion {
      * @return value of Binary as string.
      */
     String Octal2Binary (int octal) {
-        String Decimal_as_string = Octal2Decimal(octal);
-        int Decimal_as_number = Integer.parseInt(Decimal_as_string);
-        String Binary_as_string = Integer.toBinaryString(Decimal_as_number);
-        return Binary_as_string;
+        try{
+            String Decimal_as_string = Octal2Decimal(octal);
+            int Decimal_as_number = Integer.parseInt(Decimal_as_string);
+            String Binary_as_string = Integer.toBinaryString(Decimal_as_number);
+            return Binary_as_string;
+        }catch (Exception exception){
+            return "Invalid number";
+        }
     }
 
     /**
@@ -91,10 +114,14 @@ public class NumberSystemConversion {
      * @return value of Hexadecimal as string.
      */
     String Octal2Hexadecimal (int octal) {
-        String Decimal_as_string = Octal2Decimal(octal);
-        int Decimal_as_number = Integer.parseInt(Decimal_as_string);
-        String Hexadecimal_as_string = Integer.toHexString(Decimal_as_number);
-        return Hexadecimal_as_string;
+        try{
+            String Decimal_as_string = Octal2Decimal(octal);
+            int Decimal_as_number = Integer.parseInt(Decimal_as_string);
+            String Hexadecimal_as_string = Integer.toHexString(Decimal_as_number);
+            return Hexadecimal_as_string;
+        }catch (Exception exception){
+            return "Invalid number";
+        }
     }
 
 

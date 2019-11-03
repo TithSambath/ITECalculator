@@ -648,6 +648,12 @@ public class Main {
                         System.out.println("Enter number of Binary here: ");
                         value = scan.nextInt();
                         value_as_string = numberSystemConversion.binary2Octal(value);
+                        while (value_as_string == "Invalid number"){
+                            System.out.println("Warning: Binary number system have only 0 and 1.");
+                            System.out.println("Try to input Binary number again here: ");
+                            value = scan.nextInt();
+                            value_as_string = numberSystemConversion.binary2Octal(value);
+                        }
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.println(value_as_string);
@@ -656,14 +662,27 @@ public class Main {
                         System.out.println("Enter number of Binary here: ");
                         value = scan.nextInt();
                         value_as_string = numberSystemConversion.binary2Decimal(value);
+                        while (value_as_string == "Invalid number"){
+                            System.out.println("Warning: Binary number system have only 0 and 1.");
+                            System.out.println("Try to input Binary number again here: ");
+                            value = scan.nextInt();
+                            value_as_string = numberSystemConversion.binary2Decimal(value);
+                        }
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.println(value_as_string);
+
                         break;
                 case 3: System.out.println("   Binary to Hexadecimal");
                         System.out.println("Enter number of Binary here: ");
                         value = scan.nextInt();
                         value_as_string = numberSystemConversion.binary2Hexadecimal(value);
+                        while (value_as_string == "Invalid number"){
+                            System.out.println("Warning: Binary number system have only 0 and 1.");
+                            System.out.println("Try to input Binary number again here: ");
+                            value = scan.nextInt();
+                            value_as_string = numberSystemConversion.binary2Hexadecimal(value);
+                        }
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.println(value_as_string);
@@ -677,6 +696,12 @@ public class Main {
                         System.out.println("Enter number of Octal here: ");
                         value = scan.nextInt();
                         value_as_string = numberSystemConversion.Octal2Binary(value);
+                        while (value_as_string == "Invalid number"){
+                            System.out.println("Octal Number system allow only 0-7.");
+                            System.out.println("Enter Octal number system again here: ");
+                            value = scan.nextInt();
+                            value_as_string = numberSystemConversion.Octal2Binary(value);
+                        }
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.print(value_as_string);
@@ -685,6 +710,12 @@ public class Main {
                         System.out.println("Enter number of Octal here: ");
                         value = scan.nextInt();
                         value_as_string = numberSystemConversion.Octal2Decimal(value);
+                        while (value_as_string == "Invalid number"){
+                            System.out.println("Octal Number system allow only 0-7.");
+                            System.out.println("Enter Octal number system again here: ");
+                            value = scan.nextInt();
+                            value_as_string = numberSystemConversion.Octal2Decimal(value);
+                        }
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.print(value_as_string);
@@ -693,6 +724,12 @@ public class Main {
                         System.out.println("Enter number of Octal here: ");
                         value = scan.nextInt();
                         value_as_string = numberSystemConversion.Octal2Hexadecimal(value);
+                        while (value_as_string == "Invalid number"){
+                            System.out.println("Octal Number system allow only 0-7.");
+                            System.out.println("Enter Octal number system again here: ");
+                            value = scan.nextInt();
+                            value_as_string = numberSystemConversion.Octal2Hexadecimal(value);
+                        }
                         System.out.print(value);
                         System.out.print(" = ");
                         System.out.print(value_as_string);
