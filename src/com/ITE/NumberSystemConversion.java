@@ -3,12 +3,14 @@ import sun.security.provider.certpath.OCSP;
 
 import java.lang.Integer.*;
 import java.util.function.BinaryOperator;
-
+import java.util.ArrayList;
 /**
  * This class is consist of wide range to perform conversion.
  */
 public class NumberSystemConversion {
 
+    private long binaryNumber;
+    private ArrayList<Long> elementList = new ArrayList<Long>(1);
     /*
        Instruction to convert from one number system to another:
             1.Think of the user input value as any number system
@@ -31,17 +33,30 @@ public class NumberSystemConversion {
      * @param binary take user input as a binary system.(only 0 and 1)
      * @return value of decimal as string.
      */
-    String binary2Decimal (int binary){
+    long binary2Decimal (long binary){
         //if(binary % 10 == 0 || binary % 10 == 1){
-        try{
-            String binary_as_string = Integer.toString(binary);
-            int Decimal_as_number = Integer.parseInt(binary_as_string,2);
-
-            String Decimal_as_string = Integer.toString(Decimal_as_number);
-            return Decimal_as_string;
-        }catch(Exception exception){
-            return "Invalid number";
-        }
+        int numberOfDigit = 0;
+        binaryNumber = binary;
+        int decimalNumber = 0;
+        boolean condition = binaryNumber > 0;
+            /*Get each digit of binary:*/
+            while (condition){
+                elementList.add(numberOfDigit,binaryNumber % 10);
+                binaryNumber = binaryNumber / 10;
+                condition = binaryNumber > 0;
+                numberOfDigit += 1;
+            }
+            for (Long digit: elementList){
+                System.out.println(digit);
+            }
+            int i = 0;
+            for (Long digit: elementList)
+            {
+                decimalNumber += digit * Math.pow(2,i);
+                i+= 1;
+            }
+            elementList.clear();
+            return decimalNumber;
     }
 
     /**
@@ -49,15 +64,23 @@ public class NumberSystemConversion {
      * @param binary take user input as a binary system.(Accept only 0 and 1)
      * @return value of Octal as string.
      */
-    String binary2Octal (int binary){
-        try{
-            String Decimal_as_string = binary2Decimal(binary);
-            int Decimal_as_number = Integer.parseInt(Decimal_as_string,10);
-            String Octal_as_string = Integer.toOctalString(Decimal_as_number);
-            return Octal_as_string;
-        }catch (Exception exception){
-            return "Invalid number";
+    long binary2Octal (long binary){
+        long decimalNumber =  binary2Decimal(binary);
+        short index = 0;
+        while (decimalNumber > 0){
+            elementList.add(index,decimalNumber % 8);
+            decimalNumber = decimalNumber / 8;
+            index += 1;
         }
+        int octalNumber = 0;
+        int numberPower = 0;
+        for (Long digit: elementList){
+            octalNumber += digit * Math.pow(10,numberPower);
+            numberPower += 1;
+        }
+        elementList.clear();// clear all element that has been store.
+        return octalNumber;
+
     }
 
     /**
@@ -65,15 +88,52 @@ public class NumberSystemConversion {
      * @param binary take user input as a binary system.(Accept only 0 and 1)
      * @return value of Hexadecimal as string.
      */
-    String binary2Hexadecimal (int binary){
-        try{
-            String Decimal_as_string = binary2Decimal(binary);
-            int Decimal_as_number = Integer.parseInt(Decimal_as_string);
-            String  Hexadecimal_as_string = Integer.toHexString(Decimal_as_number);
-            return Hexadecimal_as_string;
-        }catch (Exception exception){
-            return "Invalid number";
+    void binary2Hexadecimal (long binary){
+
+        ArrayList<String> hexa = new ArrayList<>(1);
+        long decimalNumber = binary2Decimal(binary);
+        short index = 0;
+        while (decimalNumber > 0){
+            elementList.add(index,decimalNumber % 16);
+            decimalNumber = decimalNumber / 16;
+            index += 1;
         }
+        int Index = 0;
+        for (Long digit: elementList){
+            if (digit == 10){
+                hexa.add(Index,"A");
+            }
+            else if (digit == 11){
+                hexa.add(Index,"B");
+            }
+            else if (digit == 12){
+                hexa.add(Index,"C");
+            }
+            else if (digit == 13){
+                hexa.add(Index,"D");
+            }
+            else if (digit == 14){
+                hexa.add(Index,"E");
+            }
+            else if (digit == 15){
+                hexa.add(Index,"F");
+            }
+            else {
+                hexa.add(Index,Long.toString(digit));
+            }
+            Index += 1;
+        }
+        if (index == 1){
+            for (String hex: hexa){
+                System.out.print(hex);
+            }
+        }else {
+            for (int i = index - 1; i >= 0; i--){
+                System.out.print(hexa.get(i));
+            }
+        }
+        elementList.clear();
+
     }
 
 // Octal number system conversion:
@@ -82,14 +142,9 @@ public class NumberSystemConversion {
      * @param Octal take user input as a octal sytem.
      * @return value of Decimal as string.
      */
-    String Octal2Decimal (int Octal){
-        try{
-            String octal_as_string = Integer.toString(Octal);
-            String Decimal_as_string = Integer.toString(Integer.parseInt(octal_as_string,8));
-            return Decimal_as_string;
-        }catch (Exception exception){
-            return "Invalid number";
-        }
+    long Octal2Decimal (long Octal){
+        long binaryNumber = Octal2Binary(Octal);
+        return binary2Decimal(binaryNumber);
     }
 
     /**
@@ -97,15 +152,30 @@ public class NumberSystemConversion {
      * @param octal take user input value as an octal system.
      * @return value of Binary as string.
      */
-    String Octal2Binary (int octal) {
-        try{
-            String Decimal_as_string = Octal2Decimal(octal);
-            int Decimal_as_number = Integer.parseInt(Decimal_as_string);
-            String Binary_as_string = Integer.toBinaryString(Decimal_as_number);
-            return Binary_as_string;
-        }catch (Exception exception){
-            return "Invalid number";
+    long Octal2Binary (long octal) {
+        ArrayList<Long> binarylist = new ArrayList<>(1);
+        short index = 0;
+        short Index = 0;
+        while(octal > 0){
+            elementList.add(index,octal % 10);
+            octal = octal / 10;
+            index += 1;
         }
+    /*generate each octal digit to each binary digit*/
+        for (int i = 0; i < index; i++){
+            while (elementList.get(i) > 0){
+                binarylist.add(Index,elementList.get(i) % 2);
+                elementList.set(i,elementList.get(i)/2); // replace element in its old position.
+                Index += 1;
+            }
+        }
+    /*Combine each binary element from the end of array to the first of array(binarylist)*/
+        long binaryNumber = 0;
+        for (int i = Index - 1; i >= 0; i--){
+            binaryNumber += binarylist.get(i) * Math.pow(10,i);
+        }
+        elementList.clear();
+        return binaryNumber;
     }
 
     /**
@@ -113,15 +183,37 @@ public class NumberSystemConversion {
      * @param octal take user input value as an octal system.
      * @return value of Hexadecimal as string.
      */
-    String Octal2Hexadecimal (int octal) {
-        try{
-            String Decimal_as_string = Octal2Decimal(octal);
-            int Decimal_as_number = Integer.parseInt(Decimal_as_string);
-            String Hexadecimal_as_string = Integer.toHexString(Decimal_as_number);
-            return Hexadecimal_as_string;
-        }catch (Exception exception){
-            return "Invalid number";
+
+    void Octal2Hexadecimal (long octal) {
+        long binaryNumber = Octal2Binary(octal);
+        binary2Hexadecimal(binaryNumber);
+    }
+
+    /*Decimal to any various type of number system:*/
+
+    long Decimal2Binary (long decimal) {
+        short index = 0;
+        while (decimal > 0){
+            elementList.add(index,decimal % 2);
+            decimal = decimal /2;
+            index += 1;
         }
+        long binaryData = 0;
+        for (int i = index - 1; i >= 0; i--){
+            binaryData += elementList.get(i) * Math.pow(10,i);
+        }
+        elementList.clear();
+        return binaryData;
+    }
+
+    long Decimal2Octal (long decimal) {
+        long binaryData = Decimal2Binary(decimal);
+        return binary2Octal(binaryData);
+    }
+
+    void Decimal2Hexadecimal (long decimal) {
+       long binaryData = Decimal2Binary(decimal);
+       binary2Hexadecimal(binaryData);
     }
 
 

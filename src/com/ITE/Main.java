@@ -18,7 +18,7 @@ public class Main {
         private static float Radian = 0;
         private static int Degree = 0;
         private static double Answer,Base = 0;
-        private static long answer, base = 0;
+        private static long answer, base ,numberValue= 0;
         private static String value_as_string;
 
     // Create an object of another class for use:(import class)
@@ -36,6 +36,9 @@ public class Main {
      * @param option is an user choice from 1 to 5.
      */
         static void calledArithmeticOperators(int option){
+            System.out.println("____________________________________");
+            System.out.print("____________________________________");
+            System.out.println(" ");
             switch (option){
                 case 1 : System.out.println("Enter Number for A and B:");
                     A = scan.nextInt();
@@ -173,6 +176,7 @@ public class Main {
             switch (mainOption) {
                 case 1: Binary(subMenuOption);break;
                 case 2: Octal(subMenuOption);break;
+                case 3: Decimal(subMenuOption);break;
             }
         }
 
@@ -184,11 +188,13 @@ public class Main {
     static void createMenu () {
     // Menu Display
         System.out.println("OPERATOR MENU: ");
+        System.out.println("____________________________________");
         System.out.println("    1. Arithmetic Operator");
         System.out.println("    2. Trigonometric Operator");
         System.out.println("    3. Bitwise Operation");
         System.out.println("    4. Storage Converter");
         System.out.println("    5. Number System Conversion");
+        System.out.println("____________________________________");
 
     // Ask user option:
         System.out.println("Enter your option here: ");
@@ -198,52 +204,63 @@ public class Main {
         MenuOption = scan.nextInt(); // let user input their option.
 
         switch (MenuOption){
-            case 1: System.out.println("Arithmetic Operator: ");
-                    System.out.println("    1. Sum");
-                    System.out.println("    2. Divide");
-                    System.out.println("    3. Minus");
-                    System.out.println("    4. Multiply");
-                    System.out.println("    5. Modulo");
-                    System.out.println("Enter your option here: ");
+            case 1: System.out.println("____________________________________");
+                        System.out.println("Arithmetic Operator: ");
+                        System.out.println("    1. Sum");
+                        System.out.println("    2. Divide");
+                        System.out.println("    3. Minus");
+                        System.out.println("    4. Multiply");
+                        System.out.println("    5. Modulo");
+                    System.out.println("____________________________________");
+                        System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
                     calledArithmeticOperators(FunctionOption);
                     break;
-            case 2: System.out.println("Trigonometric Operator: ");
-                    System.out.println("    1. Sin in Radian");
-                    System.out.println("    2. Sin in Degree");
-                    System.out.println("    3. Cos in Radian");
-                    System.out.println("    4. Cos in Degree");
-                    System.out.println("    5. tan in Radian");
-                    System.out.println("    6. tan in Degree");
-                    System.out.println("Enter your option here: ");
+            case 2: System.out.println("____________________________________");
+                        System.out.println("Trigonometric Operator: ");
+                        System.out.println("    1. Sin in Radian");
+                        System.out.println("    2. Sin in Degree");
+                        System.out.println("    3. Cos in Radian");
+                        System.out.println("    4. Cos in Degree");
+                        System.out.println("    5. tan in Radian");
+                        System.out.println("    6. tan in Degree");
+                    System.out.println("____________________________________");
+                        System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
                     calledTrigonometricOperators(FunctionOption);
                     break;
-            case 3: System.out.println("Bitwise Operator: ");
-                    System.out.println("    1. AND Operator");
-                    System.out.println("    2. OR Operator");
-                    System.out.println("    3. XOR Operator");
-                    System.out.println("    4. Bitwise Inversion Operator");
-                    System.out.println("    5. Left Shift");
-                    System.out.println("    6. Right Shift");
-                    System.out.println("Enter your option here: ");
+            case 3: System.out.println("____________________________________");
+                        System.out.println("Bitwise Operator: ");
+                        System.out.println("    1. AND Operator");
+                        System.out.println("    2. OR Operator");
+                        System.out.println("    3. XOR Operator");
+                        System.out.println("    4. Bitwise Inversion Operator");
+                        System.out.println("    5. Left Shift");
+                        System.out.println("    6. Right Shift");
+                    System.out.println("____________________________________");
+                        System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
                     calledBitwiseOperators(FunctionOption);
                     break;
-            case 4: System.out.println("Storage Converter: ");
-                    System.out.println("    1. Byte");
-                    System.out.println("    2. KiloByte");
-                    System.out.println("    3. Megabyte");
-                    System.out.println("    4. Gigabyte");
-                    System.out.println("    5. Terabyte");
-                    System.out.println("    6. Petabyte");
+            case 4: System.out.println("____________________________________");
+                        System.out.println("Storage Converter: ");
+                        System.out.println("    1. Byte");
+                        System.out.println("    2. KiloByte");
+                        System.out.println("    3. Megabyte");
+                        System.out.println("    4. Gigabyte");
+                        System.out.println("    5. Terabyte");
+                        System.out.println("    6. Petabyte");
+                    System.out.println("____________________________________");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
                     storageConverterSubMenu(FunctionOption);
                     break;
-            case 5: System.out.println("Number System Conversion: ");
-                    System.out.println("    1. Binary");
-                    System.out.println("    2. Octal");
+            case 5: System.out.println("____________________________________");
+                        System.out.println("Number System Conversion: ");
+                        System.out.println("    1. Binary");
+                        System.out.println("    2. Octal");
+                        System.out.println("    3. Decimal");
+                    System.out.println("____________________________________");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
                     numberSystemConversionSubMenu(FunctionOption);
@@ -329,6 +346,7 @@ public class Main {
                     System.out.println("    1.  Binary to Octal");
                     System.out.println("    2.  Binary to Decimal");
                     System.out.println("    3.  Binary to Hexadecimal");
+                    System.out.println("Enter your option here: ");
                     subMenuOption = scan.nextInt();
                     calledNumberSystemConverter(mainOption,subMenuOption);
                     break;
@@ -336,9 +354,18 @@ public class Main {
                     System.out.println("    1.  Octal to Binary");
                     System.out.println("    2.  Octal to Decimal");
                     System.out.println("    3.  Octal to Hexadecimal");
+                    System.out.println("Enter your option here: ");
                     subMenuOption = scan.nextInt();
                     calledNumberSystemConverter(mainOption,subMenuOption);
                     break;
+            case 3: System.out.println("Decimal: ");
+                    System.out.println("    1. Decimal to Binary");
+                    System.out.println("    2. Decimal to Octal");
+                    System.out.println("    3. Decimal to Hexadecimal");
+                    System.out.println("Enter your option here: ");
+                    subMenuOption = scan.nextInt();
+                    calledNumberSystemConverter(mainOption,subMenuOption);
+
         }
     }
 
@@ -646,47 +673,24 @@ public class Main {
             switch (convertOption){
                 case 1: System.out.println("      Binary to Octal");
                         System.out.println("Enter number of Binary here: ");
-                        value = scan.nextInt();
-                        value_as_string = numberSystemConversion.binary2Octal(value);
-                        while (value_as_string == "Invalid number"){
-                            System.out.println("Warning: Binary number system have only 0 and 1.");
-                            System.out.println("Try to input Binary number again here: ");
-                            value = scan.nextInt();
-                            value_as_string = numberSystemConversion.binary2Octal(value);
-                        }
-                        System.out.print(value);
-                        System.out.print(" = ");
-                        System.out.println(value_as_string);
+                        numberValue = scan.nextLong();
+                        answer = numberSystemConversion.binary2Octal(numberValue);
+                        System.out.println("Octal number = " + answer);
                         break;
                 case 2: System.out.println("      Binary to Decimal");
                         System.out.println("Enter number of Binary here: ");
-                        value = scan.nextInt();
-                        value_as_string = numberSystemConversion.binary2Decimal(value);
-                        while (value_as_string == "Invalid number"){
-                            System.out.println("Warning: Binary number system have only 0 and 1.");
-                            System.out.println("Try to input Binary number again here: ");
-                            value = scan.nextInt();
-                            value_as_string = numberSystemConversion.binary2Decimal(value);
-                        }
-                        System.out.print(value);
-                        System.out.print(" = ");
-                        System.out.println(value_as_string);
-
+                        numberValue = scan.nextLong();
+                        answer = numberSystemConversion.binary2Decimal(numberValue);
+                        System.out.println("Decimal number = " + answer);
                         break;
                 case 3: System.out.println("   Binary to Hexadecimal");
                         System.out.println("Enter number of Binary here: ");
-                        value = scan.nextInt();
-                        value_as_string = numberSystemConversion.binary2Hexadecimal(value);
-                        while (value_as_string == "Invalid number"){
-                            System.out.println("Warning: Binary number system have only 0 and 1.");
-                            System.out.println("Try to input Binary number again here: ");
-                            value = scan.nextInt();
-                            value_as_string = numberSystemConversion.binary2Hexadecimal(value);
-                        }
-                        System.out.print(value);
-                        System.out.print(" = ");
-                        System.out.println(value_as_string);
+                        numberValue = scan.nextLong();
+                        numberSystemConversion.binary2Hexadecimal(numberValue);
+                        //System.out.println("Hexadecimal = " +value_as_string);
                         break;
+
+
             }
         }
         static void Octal (int convertOption){
@@ -694,45 +698,44 @@ public class Main {
             switch (convertOption){
                 case 1: System.out.println("      Octal to Binary: ");
                         System.out.println("Enter number of Octal here: ");
-                        value = scan.nextInt();
-                        value_as_string = numberSystemConversion.Octal2Binary(value);
-                        while (value_as_string == "Invalid number"){
-                            System.out.println("Octal Number system allow only 0-7.");
-                            System.out.println("Enter Octal number system again here: ");
-                            value = scan.nextInt();
-                            value_as_string = numberSystemConversion.Octal2Binary(value);
-                        }
-                        System.out.print(value);
-                        System.out.print(" = ");
-                        System.out.print(value_as_string);
+                        numberValue = scan.nextLong();
+                        answer = numberSystemConversion.Octal2Binary(numberValue);
+                        System.out.println("Binary = " + answer);
                         break;
                 case 2: System.out.println("      Octal to Decimal: ");
                         System.out.println("Enter number of Octal here: ");
-                        value = scan.nextInt();
-                        value_as_string = numberSystemConversion.Octal2Decimal(value);
-                        while (value_as_string == "Invalid number"){
-                            System.out.println("Octal Number system allow only 0-7.");
-                            System.out.println("Enter Octal number system again here: ");
-                            value = scan.nextInt();
-                            value_as_string = numberSystemConversion.Octal2Decimal(value);
-                        }
-                        System.out.print(value);
-                        System.out.print(" = ");
-                        System.out.print(value_as_string);
+                        numberValue = scan.nextLong();
+                        answer = numberSystemConversion.Octal2Decimal(numberValue);
+                        System.out.println("Decimal = " +answer);
                         break;
                 case 3: System.out.println("    Octal to Hexadecimal: ");
                         System.out.println("Enter number of Octal here: ");
-                        value = scan.nextInt();
-                        value_as_string = numberSystemConversion.Octal2Hexadecimal(value);
-                        while (value_as_string == "Invalid number"){
-                            System.out.println("Octal Number system allow only 0-7.");
-                            System.out.println("Enter Octal number system again here: ");
-                            value = scan.nextInt();
-                            value_as_string = numberSystemConversion.Octal2Hexadecimal(value);
-                        }
-                        System.out.print(value);
-                        System.out.print(" = ");
-                        System.out.print(value_as_string);
+                        numberValue = scan.nextLong();
+                        numberSystemConversion.Octal2Hexadecimal(numberValue);
+                        break;
+            }
+        }
+        static void Decimal (int convertOption){
+            int value;
+            switch (convertOption) {
+                case 1: System.out.println("      Decimal to Binary: ");
+                        System.out.println("Enter number of Decimal here: ");
+                        numberValue = scan.nextInt();
+                        answer = numberSystemConversion.Decimal2Binary(numberValue);
+                        System.out.println("Binary = " +answer);
+                        break;
+
+                case 2: System.out.println("      Decimal to Octal: ");
+                        System.out.println("Enter number of Decimal here: ");
+                        numberValue = scan.nextInt();
+                        answer = numberSystemConversion.Decimal2Octal(numberValue);
+                        System.out.println("Octal = " +answer);
+                        break;
+
+                case 3: System.out.println("   Decimal to Hexadecimal: ");
+                        System.out.println("Enter number of Decimal here: ");
+                        numberValue = scan.nextLong();
+                        numberSystemConversion.Decimal2Hexadecimal(numberValue);
                         break;
 
             }
@@ -755,10 +758,9 @@ public class Main {
 
         System.out.println("                        Welcome to ITE-Calculator"); // Label
 
-            createMenu(); // display Menu and do process.
+            createMenu(); // display Menu and do user order process.
 
-        // This do while use to call createMenu again and again until user want to stop.
-
+            // This do while use to call createMenu again and again until user want to stop.
             int decision; // user decision;
             do {
                 System.out.println("\n Press 1 to back to Menu and Press any key to close program: ");
