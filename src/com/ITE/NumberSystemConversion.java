@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class NumberSystemConversion {
 
     private long binaryNumber;
-    private ArrayList<Long> elementList = new ArrayList<Long>(1);
+    private ArrayList<Long> elementList = new ArrayList<Long>(1); // this one is use every where in here so after use need to clear it.
     /*
        Instruction to convert from one number system to another:
             1.Think of the user input value as any number system
@@ -34,26 +34,30 @@ public class NumberSystemConversion {
      * @return value of decimal as string.
      */
     long binary2Decimal (long binary){
-        //if(binary % 10 == 0 || binary % 10 == 1){
-        int numberOfDigit = 0;
-        binaryNumber = binary;
-        int decimalNumber = 0;
-        boolean condition = binaryNumber > 0;
+            int numberOfDigit = 0;
+            binaryNumber = binary;
+            int decimalNumber = 0;
+            boolean condition = binaryNumber > 0;
             /*Get each digit of binary:*/
-            while (condition){
-                elementList.add(numberOfDigit,binaryNumber % 10);
+            while (condition) {
+                elementList.add(numberOfDigit, binaryNumber % 10);
                 binaryNumber = binaryNumber / 10;
                 condition = binaryNumber > 0;
                 numberOfDigit += 1;
             }
-            for (Long digit: elementList){
-                System.out.println(digit);
+            /*Prevent in case user input digit that bigger than 1 and smaller than -1*/
+            for (int i = 0; i < numberOfDigit; i++){
+                //System.out.println("each element = " +elementList.get(i));
+                if (elementList.get(i) > 1){
+                    elementList.clear();
+                    return -1; // if condition true it will return -1;
+                }
             }
+            /*Generate each binary to the decimal number*/
             int i = 0;
-            for (Long digit: elementList)
-            {
-                decimalNumber += digit * Math.pow(2,i);
-                i+= 1;
+            for (Long digit : elementList) {
+                decimalNumber += digit * Math.pow(2, i);
+                i += 1;
             }
             elementList.clear();
             return decimalNumber;
@@ -88,52 +92,47 @@ public class NumberSystemConversion {
      * @param binary take user input as a binary system.(Accept only 0 and 1)
      * @return value of Hexadecimal as string.
      */
-    void binary2Hexadecimal (long binary){
+    String binary2Hexadecimal (long binary){
 
         ArrayList<String> hexa = new ArrayList<>(1);
         long decimalNumber = binary2Decimal(binary);
-        short index = 0;
-        while (decimalNumber > 0){
-            elementList.add(index,decimalNumber % 16);
-            decimalNumber = decimalNumber / 16;
-            index += 1;
-        }
-        int Index = 0;
-        for (Long digit: elementList){
-            if (digit == 10){
-                hexa.add(Index,"A");
+        System.out.println(decimalNumber);
+        boolean condition = decimalNumber != -1; // prevent wrong input.
+        if (condition) {
+            short index = 0;
+            while (decimalNumber > 0) {
+                elementList.add(index, decimalNumber % 16);
+                decimalNumber = decimalNumber / 16;
+                index += 1;
             }
-            else if (digit == 11){
-                hexa.add(Index,"B");
+            int Index = 0;
+            for (Long digit : elementList) {
+                if (digit == 10) {
+                    hexa.add(Index, "A");
+                } else if (digit == 11) {
+                    hexa.add(Index, "B");
+                } else if (digit == 12) {
+                    hexa.add(Index, "C");
+                } else if (digit == 13) {
+                    hexa.add(Index, "D");
+                } else if (digit == 14) {
+                    hexa.add(Index, "E");
+                } else if (digit == 15) {
+                    hexa.add(Index, "F");
+                } else {
+                    hexa.add(Index, Long.toString(digit));
+                }
+                Index += 1;
             }
-            else if (digit == 12){
-                hexa.add(Index,"C");
-            }
-            else if (digit == 13){
-                hexa.add(Index,"D");
-            }
-            else if (digit == 14){
-                hexa.add(Index,"E");
-            }
-            else if (digit == 15){
-                hexa.add(Index,"F");
-            }
-            else {
-                hexa.add(Index,Long.toString(digit));
-            }
-            Index += 1;
-        }
-        if (index == 1){
-            for (String hex: hexa){
-                System.out.print(hex);
-            }
-        }else {
-            for (int i = index - 1; i >= 0; i--){
+            System.out.print("Hexadecimal = ");
+            for (int i = index - 1; i >= 0; i--) {
                 System.out.print(hexa.get(i));
             }
+            elementList.clear();
+            return "true";
+        }else {
+            return "Binary number consist only 0 and 1.";
         }
-        elementList.clear();
-
     }
 
 // Octal number system conversion:
@@ -156,17 +155,51 @@ public class NumberSystemConversion {
         ArrayList<Long> binarylist = new ArrayList<>(1);
         short index = 0;
         short Index = 0;
+        short countDevide = 0;
+        /*First break each digit from the whole number. For ex: 377 to 3,7,7*/
         while(octal > 0){
             elementList.add(index,octal % 10);
             octal = octal / 10;
             index += 1;
         }
-    /*generate each octal digit to each binary digit*/
+        /*Prevent in case user input digit that bigger than or equal 8*/
+        for (int i = 0; i < index; i++){
+            if (elementList.get(i) >= 8){
+                elementList.clear();
+                return -1; // if condition true it will return -1;
+            }
+        }
+    /*generate 3 octal digit to each binary digit*/
+        /*
+            In this case:
+            - The number that can divide 3 time don't need to shift number 0 to complete three digit.
+            - The number that can divide only 1 or 2 time or 0 time need to shift 0 to complete 3 digit of binary.
+         */
+        // covert each octal digit to binary digit.
         for (int i = 0; i < index; i++){
             while (elementList.get(i) > 0){
                 binarylist.add(Index,elementList.get(i) % 2);
                 elementList.set(i,elementList.get(i)/2); // replace element in its old position.
                 Index += 1;
+                countDevide += 1;
+            }
+        /* Shift area: */
+            if (countDevide == 0){
+                for (int j = 0; j < 3; j++){
+                    binarylist.add(Index + j,0L);
+                }
+                countDevide = 0;
+                Index += 3;
+            }else if (countDevide == 1){
+                for (int j = 0; j < 2; j++){
+                    binarylist.add(Index + j,0L);
+                }
+                countDevide = 0;
+                Index += 2;
+            }else if (countDevide == 2){
+                binarylist.add(Index,0L);
+                Index += 1;
+                countDevide = 0;
             }
         }
     /*Combine each binary element from the end of array to the first of array(binarylist)*/
@@ -184,9 +217,14 @@ public class NumberSystemConversion {
      * @return value of Hexadecimal as string.
      */
 
-    void Octal2Hexadecimal (long octal) {
+    String Octal2Hexadecimal (long octal) {
         long binaryNumber = Octal2Binary(octal);
-        binary2Hexadecimal(binaryNumber);
+        if (binaryNumber != -1){
+            binary2Hexadecimal(binaryNumber);
+            return "true";
+        }else {
+            return "Octal digit range from 0-7.";
+        }
     }
 
     /*Decimal to any various type of number system:*/
