@@ -177,6 +177,7 @@ public class Main {
                 case 1: Binary(subMenuOption);break;
                 case 2: Octal(subMenuOption);break;
                 case 3: Decimal(subMenuOption);break;
+                case 4: numberSystemConversion.Hexadecimal(subMenuOption);break;
             }
         }
 
@@ -260,6 +261,7 @@ public class Main {
                         System.out.println("    1. Binary");
                         System.out.println("    2. Octal");
                         System.out.println("    3. Decimal");
+                        System.out.println("    4. Hexadecimal");
                     System.out.println("____________________________________");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
@@ -362,6 +364,13 @@ public class Main {
                     System.out.println("    1. Decimal to Binary");
                     System.out.println("    2. Decimal to Octal");
                     System.out.println("    3. Decimal to Hexadecimal");
+                    System.out.println("Enter your option here: ");
+                    subMenuOption = scan.nextInt();
+                    calledNumberSystemConverter(mainOption,subMenuOption);
+            case 4: System.out.println("Hexadecimal: ");
+                    System.out.println("    1. Hexadecimal to Binary");
+                    System.out.println("    2. Hexadecimal to Octal");
+                    System.out.println("    3. Hexadecimal to Decimal");
                     System.out.println("Enter your option here: ");
                     subMenuOption = scan.nextInt();
                     calledNumberSystemConverter(mainOption,subMenuOption);
@@ -781,7 +790,6 @@ public class Main {
                         break;
             }
         }
-
     /**
      * This function is use to go back to Menu or close program.
      * @param decision is user option: back to menu or close program.

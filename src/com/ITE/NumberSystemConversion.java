@@ -2,6 +2,7 @@ package com.ITE;
 import sun.security.provider.certpath.OCSP;
 
 import java.lang.Integer.*;
+import java.util.Scanner;
 import java.util.function.BinaryOperator;
 import java.util.ArrayList;
 /**
@@ -254,5 +255,91 @@ public class NumberSystemConversion {
        binary2Hexadecimal(binaryData);
     }
 
+    /*Hexadecimal to any various type of number system:*/
+    long Hexadecimal2Decimal (String hexadecimalValue) {
+        String hexaValue = hexadecimalValue;
+        char[] arrayofChar = hexaValue.toCharArray();
+        for (int i = 0; i < arrayofChar.length; i++){
+            if (arrayofChar[i] == '1'){
+                elementList.add(i,1L);
+            }else if (arrayofChar[i] == '2'){
+                elementList.add(i,2L);
+            }else if (arrayofChar[i] == '3'){
+                elementList.add(i,3L);
+            }else if (arrayofChar[i] == '4'){
+                elementList.add(i,4L);
+            }else if (arrayofChar[i] == '5'){
+                elementList.add(i,5L);
+            }else if (arrayofChar[i] == '6'){
+                elementList.add(i,6L);
+            }else if (arrayofChar[i] == '7'){
+                elementList.add(i,7L);
+            }else if (arrayofChar[i] == '8'){
+                elementList.add(i,8L);
+            }else if (arrayofChar[i] == '9'){
+                elementList.add(i,9L);
+            }else if (arrayofChar[i] == 'A' || arrayofChar[i] == 'a'){
+                elementList.add(i,10L);
+            }else if (arrayofChar[i] == 'B' || arrayofChar[i] == 'b'){
+                elementList.add(i,11L);
+            }else if (arrayofChar[i] == 'C' || arrayofChar[i] == 'c'){
+                elementList.add(i,12L);
+            }else if (arrayofChar[i] == 'D' || arrayofChar[i] == 'd'){
+                elementList.add(i,13L);
+            }else if (arrayofChar[i] == 'E' || arrayofChar[i] == 'e'){
+                elementList.add(i,14L);
+            }else if (arrayofChar[i] == 'F' || arrayofChar[i] == 'f'){
+                elementList.add(i,15L);
+            }
+        }// end of loop.
+        // Generate value to Decimal:
+        long DecimalValue = 0;
+        int power = arrayofChar.length;
+        for (int i = 0; i < arrayofChar.length; i++){
+            power = power - 1;
+            long Decimal_eachValue = (long) (elementList.get(i) * Math.pow(16,power));
+            DecimalValue += Decimal_eachValue;
+        }
+        elementList.clear();
+        // Result output:
+        return DecimalValue;
+    }
+    long Hexadecimal2Binary (String hexadecimalValue){
+        long DecimalValue = Hexadecimal2Decimal(hexadecimalValue);
+        long BinaryValue = Decimal2Binary(DecimalValue);
+        return BinaryValue;
+    }
+    long Hexadecimal2Octal (String hexadecimalValue){
+        long DecimalValue = Hexadecimal2Decimal(hexadecimalValue);
+        long Octal = Decimal2Octal(DecimalValue);
+        return Octal;
+    }
 
+    /*Function that create for call to use in main function*/
+    void Hexadecimal (int convertOption) {
+        int value;
+        String Hexa_string_Value;
+        long answer;
+        Scanner scan = new Scanner(System.in);
+        switch (convertOption) {
+            case 1: System.out.println("     Hexadecimal to Binary: ");
+                    System.out.println("Enter number of Hexadecimal here: ");
+                    Hexa_string_Value = scan.next();
+                    answer = Hexadecimal2Binary(Hexa_string_Value);
+                    System.out.println("Binary = " + answer);
+                    break;
+            case 2: System.out.println("      Hexadecimal to Octal: ");
+                    System.out.println("Enter number of Hexadecimal here: ");
+                    Hexa_string_Value = scan.next();
+                    answer = Hexadecimal2Octal(Hexa_string_Value);
+                    System.out.println("Octal = " + answer);
+                    break;
+            case 3: System.out.println("      Hexadecimal to Decimal: ");
+                    System.out.println("Enter number of Hexadecimal here: ");
+                    Hexa_string_Value = scan.next();
+                    answer = Hexadecimal2Decimal(Hexa_string_Value);
+                    System.out.println("Decimal = " + answer);
+                    break;
+        }
+    }
 }
