@@ -367,6 +367,7 @@ public class Main {
                     System.out.println("Enter your option here: ");
                     subMenuOption = scan.nextInt();
                     calledNumberSystemConverter(mainOption,subMenuOption);
+                    break;
             case 4: System.out.println("Hexadecimal: ");
                     System.out.println("    1. Hexadecimal to Binary");
                     System.out.println("    2. Hexadecimal to Octal");
@@ -374,6 +375,7 @@ public class Main {
                     System.out.println("Enter your option here: ");
                     subMenuOption = scan.nextInt();
                     calledNumberSystemConverter(mainOption,subMenuOption);
+                    break;
 
         }
     }
@@ -682,86 +684,101 @@ public class Main {
             switch (convertOption){
                 case 1: System.out.println("      Binary to Octal");
                         System.out.println("Enter number of Binary here: ");
-                        numberValue = scan.nextLong();
-                        answer = numberSystemConversion.binary2Octal(numberValue);
-                        while (answer == 0){
-                            System.out.println("Binary number consist only 0 and 1.");
-                            System.out.println("Enter number of Binary again here: ");
-                            numberValue = scan.nextLong();
-                            answer = numberSystemConversion.binary2Octal(numberValue);
+                        value_as_string = scan.next();
+                        if (numberSystemConversion.isValidBinary(value_as_string)){
+                            answer = numberSystemConversion.binary2Octal(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidBinary(value_as_string)) {
+                                System.out.println("Binary number consist only 0 and 1.");
+                                System.out.println("Enter number of Binary again here: ");
+                                value_as_string = scan.next();
+                            }
+                            answer = numberSystemConversion.binary2Octal(Long.parseLong(value_as_string));
                         }
                         System.out.println("Octal number = " + answer);
                         break;
 
                 case 2: System.out.println("      Binary to Decimal");
                         System.out.println("Enter number of Binary here: ");
-                        numberValue = scan.nextLong();
-                        answer = numberSystemConversion.binary2Decimal(numberValue);
-                        while (answer == -1){
-                            System.out.println("Binary number consist only 0 and 1.");
-                            System.out.println("Enter number of Binary again here: ");
-                            numberValue = scan.nextLong();
-                            answer = numberSystemConversion.binary2Decimal(numberValue);
+                        value_as_string = scan.next();
+                        if (numberSystemConversion.isValidBinary(value_as_string)){
+                            answer = numberSystemConversion.binary2Decimal(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidBinary(value_as_string)){
+                                System.out.println("Binary number consist only 0 and 1.");
+                                System.out.println("Enter number of Binary again here: ");
+                                value_as_string = scan.next();
+                            }
+                            answer = numberSystemConversion.binary2Decimal(Long.parseLong(value_as_string));
                         }
                         System.out.println("Decimal number = " + answer);
                         break;
 
                 case 3: System.out.println("   Binary to Hexadecimal");
                         System.out.println("Enter number of Binary here: ");
-                        numberValue = scan.nextLong();
-                        value_as_string = numberSystemConversion.binary2Hexadecimal(numberValue);
-                        while (value_as_string == "Binary number consist only 0 and 1."){
-                            System.out.println("Binary number consist only 0 and 1.");
-                            System.out.println("Enter number of Binary again here: ");
-                            numberValue = scan.nextLong();
-                            value_as_string = numberSystemConversion.binary2Hexadecimal(numberValue);
+                        value_as_string = scan.next();
+                        if (numberSystemConversion.isValidBinary(value_as_string)){
+                            numberSystemConversion.binary2Hexadecimal(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidBinary(value_as_string)){
+                                System.out.println("Binary number consist only 0 and 1.");
+                                System.out.println("Enter number of Binary again here: ");
+                                value_as_string = scan.next();
+                            }
+                            numberSystemConversion.binary2Hexadecimal(Long.parseLong(value_as_string));
                         }
                         break;
-
-
             }
         }
         static void Octal (int convertOption){
-            int value;
             switch (convertOption){
                 case 1: System.out.println("      Octal to Binary: ");
                         System.out.println("Enter number of Octal here: ");
-                        numberValue = scan.nextLong();
-                        answer = numberSystemConversion.Octal2Binary(numberValue);
+                        value_as_string = scan.next();
                         /*Prevent when there is something wrong.*/
-                        while (answer == -1){
-                            System.out.println("Octal digit range from 0-7.");
-                            System.out.println("Enter number of Octal again here:");
-                            numberValue = scan.nextLong();
-                            answer = numberSystemConversion.Octal2Binary(numberValue);
+                        if (numberSystemConversion.isValidOctal(value_as_string)){
+                            answer = numberSystemConversion.Octal2Binary(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidOctal(value_as_string)){
+                                System.out.println("Octal digit range from 0-7.");
+                                System.out.println("Enter number of Octal again here:");
+                                value_as_string = scan.next();
+                            }
+                            answer = numberSystemConversion.Octal2Binary(Long.parseLong(value_as_string));
                         }
                         System.out.println("Binary = " + answer);
                         break;
 
                 case 2: System.out.println("      Octal to Decimal: ");
                         System.out.println("Enter number of Octal here: ");
-                        numberValue = scan.nextLong();
-                        answer = numberSystemConversion.Octal2Decimal(numberValue);
+                        value_as_string = scan.next();
                         /*Prevent when there is something wrong.*/
-                        while (answer == -1){
-                            System.out.println("Octal digit range from 0-7.");
-                            System.out.println("Enter number of Octal again here:");
-                            numberValue = scan.nextLong();
-                            answer = numberSystemConversion.Octal2Decimal(numberValue);
+                        if (numberSystemConversion.isValidOctal(value_as_string)){
+                            answer = numberSystemConversion.Octal2Decimal(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidOctal(value_as_string)){
+                                System.out.println("Octal digit range from 0-7.");
+                                System.out.println("Enter number of Octal again here:");
+                                value_as_string = scan.next();
+                            }
+                            answer = numberSystemConversion.Octal2Decimal(Long.parseLong(value_as_string));
                         }
                         System.out.println("Decimal = " +answer);
                         break;
 
                 case 3: System.out.println("    Octal to Hexadecimal: ");
                         System.out.println("Enter number of Octal here: ");
-                        numberValue = scan.nextLong();
-                        value_as_string = numberSystemConversion.Octal2Hexadecimal(numberValue);
+                        value_as_string = scan.next();
                         /*Prevent when there is something wrong.*/
-                        while (value_as_string == "Octal digit range from 0-7."){
-                            System.out.println("Octal digit range from 0-7.");
-                            System.out.println("Enter number of Octal again here: ");
-                            numberValue = scan.nextLong();
-                            value_as_string = numberSystemConversion.Octal2Hexadecimal(numberValue);
+                        if (numberSystemConversion.isValidOctal(value_as_string)){
+                            numberSystemConversion.Octal2Hexadecimal(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidOctal(value_as_string)){
+                                System.out.println("Octal digit range from 0-7.");
+                                System.out.println("Enter number of Octal again here: ");
+                                value_as_string = scan.next();
+                            }
+                            numberSystemConversion.Octal2Hexadecimal(Long.parseLong(value_as_string));
                         }
                         break;
             }
@@ -771,22 +788,49 @@ public class Main {
             switch (convertOption) {
                 case 1: System.out.println("      Decimal to Binary: ");
                         System.out.println("Enter number of Decimal here: ");
-                        numberValue = scan.nextInt();
-                        answer = numberSystemConversion.Decimal2Binary(numberValue);
+                        value_as_string = scan.next();
+                        if (numberSystemConversion.isValidDecimal(value_as_string)){
+                            answer = numberSystemConversion.Decimal2Binary(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidDecimal(value_as_string)){
+                                System.out.println("System valid only Decimal number: 0-9\n");
+                                System.out.print("Enter number of Decimal again here: ");
+                                value_as_string = scan.next();
+                            }
+                            answer = numberSystemConversion.Decimal2Binary(Long.parseLong(value_as_string));
+                        }
                         System.out.println("Binary = " +answer);
                         break;
 
                 case 2: System.out.println("      Decimal to Octal: ");
                         System.out.println("Enter number of Decimal here: ");
-                        numberValue = scan.nextInt();
-                        answer = numberSystemConversion.Decimal2Octal(numberValue);
+                        value_as_string = scan.next();
+                        if (numberSystemConversion.isValidDecimal(value_as_string)){
+                            answer = numberSystemConversion.Decimal2Octal(Long.parseLong(value_as_string));
+                        }else{
+                            while (!numberSystemConversion.isValidDecimal(value_as_string)){
+                                System.out.println("System valid only Decimal number: 0-9\n");
+                                System.out.print("Enter number of Decimal again here: ");
+                                value_as_string = scan.next();
+                            }
+                            answer = numberSystemConversion.Decimal2Octal(Long.parseLong(value_as_string));
+                        }
                         System.out.println("Octal = " +answer);
                         break;
 
                 case 3: System.out.println("   Decimal to Hexadecimal: ");
                         System.out.println("Enter number of Decimal here: ");
-                        numberValue = scan.nextLong();
-                        numberSystemConversion.Decimal2Hexadecimal(numberValue);
+                        value_as_string = scan.next();
+                        if (numberSystemConversion.isValidDecimal(value_as_string)){
+                            numberSystemConversion.Decimal2Hexadecimal(Long.parseLong(value_as_string));
+                        }else {
+                            while (!numberSystemConversion.isValidDecimal(value_as_string)){
+                                System.out.println("System valid only Decimal number: 0-9\n");
+                                System.out.print("Enter number of Decimal again here: ");
+                                value_as_string = scan.next();
+                            }
+                            numberSystemConversion.Decimal2Hexadecimal(Long.parseLong(value_as_string));
+                        }
                         break;
             }
         }
