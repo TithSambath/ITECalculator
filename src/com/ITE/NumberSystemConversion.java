@@ -89,9 +89,8 @@ public class NumberSystemConversion {
     }
 
     /**
-     * This binary2Octal is use to convert from Binary system to Hexadecimal system.
+     * This binary2Hexadecimal is use to convert from Binary system to Hexadecimal system.
      * @param binary take user input as a binary system.(Accept only 0 and 1)
-     * @return value of Hexadecimal as string.
      */
     void binary2Hexadecimal (long binary) {
 
@@ -212,9 +211,7 @@ public class NumberSystemConversion {
     /**
      * This Octal2Hexadecimal is use to convert from octal system to Binary system.
      * @param octal take user input value as an octal system.
-     * @return value of Hexadecimal as string.
      */
-
     void Octal2Hexadecimal (long octal) {
         long binaryNumber = Octal2Binary(octal);
         binary2Hexadecimal(binaryNumber);
@@ -222,6 +219,11 @@ public class NumberSystemConversion {
 
     /*Decimal to any various type of number system:*/
 
+    /**
+     * This Decimal2Binary Method is use to convert from Decimal to Binary number system.
+     * @param decimal parameter take value as decimal
+     * @return
+     */
     long Decimal2Binary (long decimal) {
         short index = 0;
         while (decimal > 0){
@@ -237,11 +239,21 @@ public class NumberSystemConversion {
         return binaryData;
     }
 
+    /**
+     * This Decimal2Octal Method is use to convert from Decimal to Octal number system.
+     * @param decimal parameter take value as decimal
+     * @return
+     */
     long Decimal2Octal (long decimal) {
         long binaryData = Decimal2Binary(decimal);
         return binary2Octal(binaryData);
     }
 
+    /**
+     * This Decimal2Hexadecimal Method is use to convert from Decimal to Hexadecimal number system.
+     * @param decimal parameter take value as decimal
+     * @return
+     */
     void Decimal2Hexadecimal (long decimal) {
        long binaryData = Decimal2Binary(decimal);
        binary2Hexadecimal(binaryData);
@@ -288,7 +300,7 @@ public class NumberSystemConversion {
         long DecimalValue = 0;
         int power = arrayofChar.length;
         for (int i = 0; i < arrayofChar.length; i++){
-            power = power - 1;
+            power = power - 1; // power start from n - 1 coz our value store as sequence already.
             long Decimal_eachValue = (long) (elementList.get(i) * Math.pow(16,power));
             DecimalValue += Decimal_eachValue;
         }

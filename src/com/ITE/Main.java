@@ -28,6 +28,7 @@ public class Main {
         static Operators operators = new Operators();
         static StorageConverter storageConverter = new StorageConverter();
         static NumberSystemConversion numberSystemConversion = new NumberSystemConversion();
+        static BinaryArithmetic binaryArithmetic = new BinaryArithmetic();
 
    // create function for calling a specific function:
 
@@ -266,6 +267,16 @@ public class Main {
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
                     numberSystemConversionSubMenu(FunctionOption);
+            case 6: System.out.println("____________________________________");
+                        System.out.println("Binary Arithmetic: ");
+                        System.out.println("    1. Binary Add");
+                        System.out.println("    2. Binary Subtraction");
+                        System.out.println("    3. Find First Complement");
+                        System.out.println("    4. Binary Multiply");
+                    System.out.println("____________________________________");
+                    System.out.println("Enter your option here: ");
+                    FunctionOption = scan.nextInt();
+                    binaryArithmetic.binaryArithmetic(FunctionOption);
 
 
         }
