@@ -276,7 +276,8 @@ public class Main {
                     System.out.println("____________________________________");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
-                    binaryArithmetic.binaryArithmetic(FunctionOption);
+                    BinaryArithmetic.callBinaryArithmetic CalledBIArithmetic = binaryArithmetic.new callBinaryArithmetic();
+                    CalledBIArithmetic.binaryArithmetic(FunctionOption);
 
 
         }
