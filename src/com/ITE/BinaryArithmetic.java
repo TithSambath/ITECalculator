@@ -118,8 +118,20 @@ public class BinaryArithmetic {
         String secondcomplement = binaryAdd(firstComplementOfsecondValue,"1");
         String addBothValue = binaryAdd(firstValue,secondcomplement);
         String Answer = "";
-        for (int i = 1; i < addBothValue.length(); i++){
-            Answer += addBothValue.charAt(i);
+        // check if its answer is not positive:
+        /*
+            Base on second complement: the number of bit of both value less than number of bit after add both value,
+                                       the Answer will be positive.
+                                       In contrast if the number of bit of both value equal to number of bit after add both value,
+                                       the Answer will be Negative.
+         */
+        if (addBothValue.length() > secondcomplement.length()){
+            for (int i = 1; i < addBothValue.length(); i++){
+                Answer += addBothValue.charAt(i);
+            }
+        }else {
+            Answer += "-";
+            Answer += binaryAdd(findFirstComplement(addBothValue),"1");
         }
         return Answer;
     }
