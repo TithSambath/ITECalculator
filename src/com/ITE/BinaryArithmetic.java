@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BinaryArithmetic {
+    // create object from class StorageConverter in order to us its Protected Method:
+        NumberSystemConversion check = new NumberSystemConversion();
     private String binaryAdd(String valueOfFirstBinary, String valueOfSecondBinary) {
 
         // create list for storing each binary digit
@@ -145,8 +147,18 @@ public class BinaryArithmetic {
                 case 1: System.out.println("     ADD Binary ");
                         System.out.print("First Value: ");
                         FirstValue = scan.next();
-                        System.out.print("First Value: ");
+                        // Protect if User type in wrong input
+                            while (!check.isValidBinary(FirstValue)){
+                                System.out.print("Warning: Wrong input. Try to input First Value again here: ");
+                                FirstValue = scan.next();
+                            }
+                        System.out.print("Second Value: ");
                         SecondValue = scan.next();
+                        // Protect if User type in wrong input
+                            while (!check.isValidBinary(SecondValue)){
+                                System.out.print("Warning: Wrong input. Try to input Second Value again here: ");
+                                SecondValue = scan.next();
+                            }
                         Answer = binaryAdd(FirstValue, SecondValue);
                         System.out.println("Answer = " + Answer);
                         break;
@@ -154,8 +166,18 @@ public class BinaryArithmetic {
                         System.out.print("_______________________________\n");
                         System.out.print("First Value: ");
                         FirstValue = scan.next();
+                        // Protect if User type in wrong input
+                            while (!check.isValidBinary(FirstValue)){
+                                System.out.print("Warning: Wrong input. Try to input First Value again here: ");
+                                FirstValue = scan.next();
+                            }
                         System.out.print("Second Value: ");
                         SecondValue = scan.next();
+                        // Protect if User type in wrong input
+                            while (!check.isValidBinary(SecondValue)){
+                                System.out.print("Warning: Wrong input. Try to input Second Value again here: ");
+                                SecondValue = scan.next();
+                            }
                         Answer = binarySubtraction(FirstValue,SecondValue);
                         System.out.println("Answer = "+Answer);
                         break;
@@ -163,6 +185,11 @@ public class BinaryArithmetic {
                         System.out.print("_______________________________\n");
                         System.out.print("Give Binary Value: ");
                         String Value = scan.next();
+                        // Protect if User type in wrong input
+                            while (!check.isValidBinary(Value)){
+                                System.out.print("Warning: Wrong input. Try to input Value again here: ");
+                                Value = scan.next();
+                            }
                         Answer = findFirstComplement(Value);
                         System.out.println("Answer = " +Answer);
                         break;

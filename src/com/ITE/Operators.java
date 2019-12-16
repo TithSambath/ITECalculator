@@ -1,6 +1,7 @@
 package com.ITE;
 import java.lang.Math;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 /**
  * Operator: This class contain all arithmetic operations.
@@ -75,7 +76,7 @@ public class Operators {
      * @return it return the value of the Sin of an Angle.
      */
     float Sind(int Degree){
-       float Radian = (float) (Degree*(Math.PI/180));
+       float Radian = (float) (Degree*(3.14/180));
        return (float) Math.sin(Double.parseDouble(df.format(Radian)));
        // Double.parseDouble mean to cast value from string to double value.
     }
@@ -95,8 +96,9 @@ public class Operators {
      * @return it return the value of the Cos of an Angle(Degree);
      */
     float Cosd(int Degree){
-        float Radian = (float) (Degree*(Math.PI/180));
-        return (float)Math.cos(Radian);
+        float Radian = (float) (Degree*(3.14/180));
+        System.out.println(Radian);
+        return Cos(Radian);
     }
 
     /**
@@ -160,6 +162,98 @@ public class Operators {
      */
     double degree2Radian(double Degree){
         return Math.toRadians(Degree);
+    }
+
+    // Create Function for using to call each of above Method to use in main function:
+    /**
+     * This function is use to call each operators from Arithmetic Operators Method.
+     * @param option is an user choice from 1 to 5.
+     */
+        void calledArithmeticOperators(int option){
+            // Declare variable for using:
+                int A,B,answerAsInt;
+                double answerAsDouble;
+                Scanner scan = new Scanner(System.in);
+
+            System.out.println("____________________________________");
+            System.out.print("____________________________________");
+            System.out.println(" ");
+            switch (option){
+                case 1 : System.out.println("Enter Number for A and B:");
+                    A = scan.nextInt();
+                    B = scan.nextInt();
+                    answerAsInt = Sum(A,B);
+                    System.out.println("Answer = "+answerAsInt);
+                    break;
+                case 2 : System.out.println("Enter Number for A and B:");
+                    A = scan.nextInt();
+                    B = scan.nextInt();
+                    answerAsDouble = Divide(A,B);
+                    System.out.println("Answer = "+answerAsDouble);
+                    break;
+                case 3 : System.out.println("Enter Number for A and B:");
+                    A = scan.nextInt();
+                    B = scan.nextInt();
+                    answerAsInt = Minus(A,B);
+                    System.out.println("Answer = "+answerAsInt);
+                    break;
+                case 4 : System.out.println("Enter Number for A and B:");
+                    A = scan.nextInt();
+                    B = scan.nextInt();
+                    answerAsInt = Multiply(A,B);
+                    System.out.println("Answer = "+answerAsInt);
+                    break;
+                case 5 : System.out.println("Enter Number for A and B:");
+                    A = scan.nextInt();
+                    B = scan.nextInt();
+                    answerAsInt = Modulo(A,B);
+                    System.out.println("Answer = "+answerAsInt);
+                    break;
+            }
+        }
+    /**
+     * This function is use to call each operators from Trigonometric Method.
+     * @param option is an user choice from 1 to 6
+     */
+        void calledTrigonometricOperators(int option){
+            // declare some variable to use for receiving result from each function:
+                float Radian;
+                double Answer;
+                int Degree;
+                Scanner scan = new Scanner(System.in);
+
+            switch (option){
+                case 1 : System.out.println("Enter Value of Radian: ");
+                    Radian = scan.nextFloat();
+                    Answer = Double.parseDouble(df.format(Sin(Radian)));
+                    System.out.println("Answer = "+Answer);
+                    break;
+                case 2 : System.out.println("Enter number of Degree: ");
+                    Degree = scan.nextInt();
+                    Answer =  Double.parseDouble(df.format(Sind(Degree)));
+                    System.out.println("Answer = "+Answer);
+                    break;
+                case 3 : System.out.println("Enter number of Radian: ");
+                    Radian = scan.nextFloat();
+                    Answer = Double.parseDouble(df.format(Cos(Radian)));
+                    System.out.println("Answer ="+Answer);// format Answer into 0.00 less than before.
+                    break;
+                case 4 : System.out.println("Enter number of Degree: ");
+                    Degree = scan.nextInt();
+                    Answer = Double.parseDouble(df.format(Cosd(Degree)));
+                    System.out.println("Answer = "+Answer);
+                    break;
+                case 5 : System.out.println("Enter number of Radian: ");
+                    Radian = scan.nextFloat();
+                    Answer = Double.parseDouble(df.format(tan(Radian)));
+                    System.out.println("Answer = "+Answer);
+                    break;
+                case 6 : System.out.println("Enter number of Degree: ");
+                    Degree = scan.nextInt();
+                    Answer = Double.parseDouble(df.format(tand(Degree)));
+                    System.out.println("Answer = "+Answer);
+                    break;
+            }
     }
 }
 
