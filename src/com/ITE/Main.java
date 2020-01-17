@@ -112,7 +112,8 @@ public class Main {
                         System.out.println("    1. Binary Add");
                         System.out.println("    2. Binary Subtraction");
                         System.out.println("    3. Find First Complement");
-                        System.out.println("    4. Binary Multiply");
+                        System.out.println("    4. Second Complement");
+                        System.out.println("    5. Subtract with 2nd Complement");
                     System.out.println("____________________________________");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();

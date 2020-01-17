@@ -233,7 +233,7 @@ public class NumberSystemConversion {
         }
         long binaryData = 0;
         for (int i = index - 1; i >= 0; i--){
-            binaryData += elementList.get(i) * Math.pow(10,i);
+            binaryData += elementList.get(i) * Math.pow(10,i); // combine each digit together.
         }
         elementList.clear();
         return binaryData;

@@ -1,12 +1,13 @@
 package com.ITE;
 
 import java.awt.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BinaryArithmetic {
     // create object from class StorageConverter in order to us its Protected Method:
-        NumberSystemConversion check = new NumberSystemConversion();
+    NumberSystemConversion check = new NumberSystemConversion();
     private String binaryAdd(String valueOfFirstBinary, String valueOfSecondBinary) {
 
         // create list for storing each binary digit
@@ -137,7 +138,7 @@ public class BinaryArithmetic {
         }
         return Answer;
     }
-    class callBinaryArithmetic {
+    class callBinaryArithmetic { // called all these function to used in Main function
         public void binaryArithmetic(int operationOption) {
             Scanner scan = new Scanner(System.in);
             String Answer;
@@ -193,8 +194,75 @@ public class BinaryArithmetic {
                         Answer = findFirstComplement(Value);
                         System.out.println("Answer = " +Answer);
                         break;
-
-
+                case 4: System.out.println("    Binary Second Complement ");
+                        System.out.print("_______________________________\n");
+                        System.out.print("Give Binary Value: ");
+                        Value = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(Value)){
+                            System.out.print("Warning: Wrong input. Try to input Value again here: ");
+                            Value = scan.next();
+                        }
+                        Answer = secondComplement(Value);
+                        System.out.println("Answer = " + Answer);
+                        break;
+                case 5: System.out.println("    Subtract with 2nd Complement");
+                        System.out.print("_______________________________\n");
+                        System.out.print("First Value: ");
+                        FirstValue = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(FirstValue)){
+                            System.out.print("Warning: Wrong input. Try to input First Value again here: ");
+                            FirstValue = scan.next();
+                        }
+                        System.out.print("Second Value: ");
+                        SecondValue = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(SecondValue)){
+                            System.out.print("Warning: Wrong input. Try to input Second Value again here: ");
+                            SecondValue = scan.next();
+                        }
+                        Answer = subtractWith2ndComplement(FirstValue,SecondValue);
+                        System.out.println("Answer: " + Answer);
+                        break;
+                case 6: System.out.println("    Binary Multipication ");
+                        System.out.print("_______________________________\n");
+                        System.out.print("First Value: ");
+                        FirstValue = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(FirstValue)){
+                            System.out.print("Warning: Wrong input. Try to input First Value again here: ");
+                            FirstValue = scan.next();
+                        }
+                        System.out.print("Second Value: ");
+                        SecondValue = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(SecondValue)){
+                            System.out.print("Warning: Wrong input. Try to input Second Value again here: ");
+                            SecondValue = scan.next();
+                        }
+                        Answer = multiply(FirstValue,SecondValue);
+                        System.out.println("Answer = " + Answer);
+                        break;
+                case 7: System.out.println("    Binary Division ");
+                        System.out.print("_______________________________\n");
+                        System.out.print("First Value: ");
+                        FirstValue = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(FirstValue)){
+                            System.out.print("Warning: Wrong input. Try to input First Value again here: ");
+                            FirstValue = scan.next();
+                        }
+                        System.out.print("Second Value: ");
+                        SecondValue = scan.next();
+                        // Protect if User type in wrong input
+                        while (!check.isValidBinary(SecondValue)){
+                            System.out.print("Warning: Wrong input. Try to input Second Value again here: ");
+                            SecondValue = scan.next();
+                        }
+                        Answer = divide(FirstValue,SecondValue);
+                        System.out.println("Answer = " + Answer);
+                        break;
             }
         }
     }
@@ -222,6 +290,118 @@ public class BinaryArithmetic {
                 FirstValue += temp;
                 return FirstValue;
             }
+        }
+        String rightShift (String value,int numbertoShift){
+            for (int i = 0; i < numbertoShift; i++){
+                value += "0";
+            }
+            return value;
+        }
+    }
+    private String secondComplement (String value){
+        String firstComplement = findFirstComplement(value);
+        String secondComplement = binaryAdd(firstComplement,"1");
+        return secondComplement;
+    }
+    private String subtractWith2ndComplement(String fValue,String secValue) {
+         /*
+         check if both value have the same number of bit or not:
+         if not shift 0 to the value that has less bit.
+        */
+        if (fValue.length() > secValue.length()){
+            needShift want2Shift = new needShift();
+            secValue = want2Shift.Shift(fValue,secValue);
+        }else if (fValue.length() < secValue.length()){
+            needShift want2Shift = new needShift();
+            fValue = want2Shift.Shift(fValue,secValue);
+        }
+        // Subtraction process:
+            // convert second value to second binary:
+            String secondValas2ndComplement = secondComplement(secValue);
+            String addBothValue = binaryAdd(fValue,secondValas2ndComplement);
+        // check if its answer is not positive:
+        /*
+            Base on second complement: the number of bit of both value less than number of bit after add both value,
+                                       the Answer will be positive.
+                                       In contrast if the number of bit of both value equal to number of bit after add both value,
+                                       the Answer will be Negative.
+         */
+        String Answer = "";
+        if (addBothValue.length() > secondValas2ndComplement.length()){
+            for (int i = 1; i < addBothValue.length(); i++){
+                Answer += addBothValue.charAt(i);
+            }
+        }else {
+            Answer += "-";
+            Answer += binaryAdd(findFirstComplement(addBothValue),"1");
+        }
+        return Answer;
+
+    }
+    private String multiply (String fValue,String secValue){
+        /*
+         check if both value have the same number of bit or not:
+         if not shift 0 to the value that has less bit.
+        */
+        if (fValue.length() > secValue.length()){
+            needShift want2Shift = new needShift();
+            secValue = want2Shift.Shift(fValue,secValue);
+        }else if (fValue.length() < secValue.length()){
+            needShift want2Shift = new needShift();
+            fValue = want2Shift.Shift(fValue,secValue);
+        }
+
+        // Multiplication process:
+        String addLinebyLine = "0";
+        String afterMultiply;
+        int cycle = -1;
+            for (int i = secValue.length()-1; i >= 0; i--){
+                boolean condition1 = secValue.charAt(i) == '1';
+                boolean condition2 = secValue.charAt(i) == '0';
+                cycle += 1;
+                if (condition1){
+                    // copy first value:
+                        if (cycle != 0) {
+                            afterMultiply = fValue;
+                            needShift want2Shift = new needShift();
+                            afterMultiply = want2Shift.rightShift(afterMultiply,cycle);
+                            // add those value line by line:
+                            addLinebyLine = binaryAdd(afterMultiply,addLinebyLine);
+                        }
+                        else {
+                            afterMultiply = fValue;
+                            // no need to shift.
+                            addLinebyLine = binaryAdd(afterMultiply,addLinebyLine);
+                        }
+                }
+                else if (condition2){
+                    // assign all bit to zero: coz multiply with zero.
+                        if (cycle != 0){
+                            afterMultiply = "0";
+                            needShift want2Shift = new needShift();
+                            afterMultiply = want2Shift.rightShift(afterMultiply,cycle);
+                            // add those value line by line:
+                            addLinebyLine = binaryAdd(afterMultiply,addLinebyLine);
+                        }
+                }
+            }
+            return addLinebyLine;
+    }
+    private String divide (String dividend, String divisor){
+        String Zero = "";
+        needShift needToShift = new needShift();
+        Zero = needToShift.rightShift(Zero,dividend.length());
+        String Answer = Zero;
+        System.out.println(Zero);
+        if (!dividend.equals(Zero)) {
+            while (!dividend.equals(Zero)){
+                dividend = subtractWith2ndComplement(dividend,divisor);
+                Answer = binaryAdd(Answer,"1");
+                //System.out.println("HELLO");
+            }
+            return Answer;
+        }else {
+            return "0";
         }
     }
 
