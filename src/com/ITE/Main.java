@@ -13,7 +13,6 @@ public class Main {
 
     // Create an object of another class for use:(import class)
         static Scanner scan = new Scanner(System.in);
-        static DecimalFormat df = new DecimalFormat("0.00"); // Create casting but it is return string
         static Bitwise bitwise = new Bitwise();
         static Operators operators = new Operators();
         static StorageConverter storageConverter = new StorageConverter();
@@ -114,6 +113,8 @@ public class Main {
                         System.out.println("    3. Find First Complement");
                         System.out.println("    4. Second Complement");
                         System.out.println("    5. Subtract with 2nd Complement");
+                        System.out.println("    6. Multiply");
+                        System.out.println("    7. Divide");
                     System.out.println("____________________________________");
                     System.out.println("Enter your option here: ");
                     FunctionOption = scan.nextInt();
@@ -139,18 +140,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         System.out.println("                        Welcome to ITE-Calculator"); // Label
 
             createMenu(); // display Menu and do user order process.
 
             // This do while use to call createMenu again and again until user want to stop.
-            int decision; // user decision;
-            do {
-                System.out.println("\n Press 1 to back to Menu and Press any key to close program: ");
-                decision = scan.nextInt();
-                ContinuousOrClose(decision);
-            }while (decision == 1);
+                int decision; // user decision;
+                do {
+                    System.out.println("\n Press 1 to back to Menu and Press any key to close program: ");
+                    decision = scan.nextInt();
+                    ContinuousOrClose(decision);
+                }while (decision == 1);
 
        /*
             case 12 : System.out.println("Enter integer value here: ");
@@ -179,6 +179,4 @@ public class Main {
                         System.out.println("Answer = "+Answer);
          */
         }//end main function.
-
-
 }// end main class.

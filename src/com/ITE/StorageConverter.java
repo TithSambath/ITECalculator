@@ -8,7 +8,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to to convert from byte to kilobyte.
-     * @param numByte
+     * @param numByte take value as long data type
      * @return value as double.
      */
     double byte2KB (long numByte){
@@ -17,7 +17,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to to convert from byte to MB.
-     * @param numByte
+     * @param numByte take value as long data type
      * @return value as double
      */
     double byte2MB (long numByte){
@@ -26,17 +26,27 @@ public class StorageConverter {
 
     /**
      * This Method is use to to convert from byte to GB.
-     * @param numByte
+     * @param numByte take value as long data type
      * @return value as double
      */
     double byte2GB (long numByte){
         return (double) numByte / (Math.pow(1024,3));
     }
 
+    /**
+     * This Method is use to convert from byte to TB.
+     * @param numByte take value as long data type
+     * @return value as double.
+     */
     double byte2TB (long numByte){
         return (double) numByte / (Math.pow(1024,4));
     }
 
+    /**
+     * This method is use to convert from byte to PB.
+     * @param numByte take value as long data type.
+     * @return value as double.
+     */
     double byte2PB (long numByte){
         return (double) numByte / (Math.pow(1024,5));
     }
@@ -44,7 +54,7 @@ public class StorageConverter {
     // Kilobyte to any various type:
     /**
      * This Method is use to to convert from KB to Byte.
-     * @param kilobyte
+     * @param kilobyte take value as long data type
      * @return value as double
      */
     double kb2Byte(long kilobyte){
@@ -53,7 +63,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to to convert from KB to MB.
-     * @param kilobyte
+     * @param kilobyte take value as long data type
      * @return value as double
      */
     double kb2MB (long kilobyte){
@@ -62,7 +72,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to to convert from KB to GB.
-     * @param kilobyte
+     * @param kilobyte take value as long data type
      * @return value as double
      */
     double kb2GB (long kilobyte){
@@ -71,7 +81,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to to convert from KB to TB.
-     * @param kilobyte
+     * @param kilobyte take value as long data type
      * @return value as double
      */
     double kb2TB (long kilobyte){
@@ -80,7 +90,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from KB to PB
-     * @param kilobyte
+     * @param kilobyte take value as long data type
      * @return value as double
      */
     double kb2PB (long kilobyte){
@@ -91,7 +101,7 @@ public class StorageConverter {
 
     /**
      * THis Method is use to convert from MB to Byte
-     * @param Megabyte
+     * @param Megabyte take value as long data type
      * @return value as double
      */
     double mb2Byte (long Megabyte){
@@ -100,7 +110,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from MB to KB
-     * @param Megabyte
+     * @param Megabyte take value as long data type
      * @return value as double
      */
     double mb2KB (long Megabyte){
@@ -109,7 +119,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from MB to GB
-     * @param Megabyte
+     * @param Megabyte take value as long data type
      * @return value as double
      */
     double mb2GB (long Megabyte){
@@ -118,7 +128,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from MB to TB
-     * @param Megabyte
+     * @param Megabyte take value as long data type
      * @return value as double
      */
     double mb2TB (long Megabyte){
@@ -127,7 +137,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from MB to PB
-     * @param Megabyte
+     * @param Megabyte take value as long data type
      * @return value as double
      */
     double mb2PB (long Megabyte){
@@ -138,7 +148,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from GB to Byte
-     * @param gigabyte
+     * @param gigabyte take value as long data type
      * @return value as double
      */
     double gb2byte (long gigabyte){
@@ -147,7 +157,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from GB to KB
-     * @param gigabyte
+     * @param gigabyte take value as long data type
      * @return value as double
      */
     double gb2KB (long gigabyte){
@@ -156,7 +166,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from GB to MB
-     * @param gigabyte
+     * @param gigabyte take value as long data type
      * @return value as double
      */
     double gb2MB (long gigabyte){
@@ -165,7 +175,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from GB to TB
-     * @param gigabyte
+     * @param gigabyte take value as long data type
      * @return value as double
      */
     double gb2TB (long gigabyte){
@@ -174,7 +184,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from GB to PB
-     * @param gigabyte
+     * @param gigabyte take value as long data type
      * @return value as double
      */
     double gb2PB (long gigabyte){
@@ -184,7 +194,7 @@ public class StorageConverter {
     // Terabyte to any various type:
     /**
      * This Method is use to convert from TB to Byte
-     * @param terabyte
+     * @param terabyte take value as long data type
      * @return value as double
      */
     double tb2Byte (long terabyte){
@@ -193,7 +203,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from TB to KB
-     * @param terabyte
+     * @param terabyte take value as long data type
      * @return value as double
      */
     double tb2KB (long terabyte){
@@ -202,7 +212,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from TB to MB
-     * @param terabyte
+     * @param terabyte take value as long data type
      * @return value as double
      */
     double tb2MB (long terabyte){
@@ -211,7 +221,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from TB to GB
-     * @param terabyte
+     * @param terabyte take value as long data type
      * @return value as double
      */
     double tb2GB (long terabyte){
@@ -220,7 +230,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from TB to PB
-     * @param terabyte
+     * @param terabyte take value as long data type
      * @return value as double
      */
     double tb2PB (long terabyte){
@@ -231,7 +241,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from PB to Byte
-     * @param petabyte
+     * @param petabyte take value as long data type
      * @return value as double
      */
     double pb2Byte (long petabyte){
@@ -240,7 +250,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from PB to KB
-     * @param petabyte
+     * @param petabyte take value as long data type
      * @return value as double
      */
     double pb2KB (long petabyte){
@@ -249,7 +259,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from PB to MB
-     * @param petabyte
+     * @param petabyte take value as long data type
      * @return value as double
      */
     double pb2MB (long petabyte){
@@ -258,7 +268,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from PB to GB
-     * @param petabyte
+     * @param petabyte take value as long data type
      * @return value as double
      */
     double pb2GB (long petabyte){
@@ -267,7 +277,7 @@ public class StorageConverter {
 
     /**
      * This Method is use to convert from PB to TB
-     * @param petabyte
+     * @param petabyte take value as long data type
      * @return value as double
      */
     double pb2TB (long petabyte){
@@ -276,8 +286,16 @@ public class StorageConverter {
 
     // Create Function for using to call each of above Method to use in main function:
     /**
-     * This funtion is use to call each converter method from StorageConverter class.
+     * This function is use to call each converter method from StorageConverter class to use in main class.
+     * Menu Option:
+     *      1. Byte
+     *      2. KiloByte
+     *      3. MegaByte
+     *      4. GigaByte
+     *      5. TeraByte
+     *      6. PetaByte
      * @param menuOption is an user choice from 1 to 6
+     * @param converter is an specific converter option (number represented shown in menu)
      */
     void calledStorageConverter (int menuOption,int converter){
         switch (menuOption){
@@ -365,6 +383,17 @@ public class StorageConverter {
                 break;
         }
     }
+
+    /**
+     * This Byte Method group all byte Converter.
+     * Option:
+     *      1. Byte to Kilobyte
+     *      2. Byte to Megabyte
+     *      3. Byte to Gigabyte
+     *      4. Byte to Terabyte
+     *      5. Byte to Petabyte
+     * @param convertOption take option as integer.
+     */
     private void Byte (int convertOption){
         switch (convertOption){
             case 1: System.out.println("    Byte To Kilobyte: ");
@@ -414,6 +443,17 @@ public class StorageConverter {
                 break;
         }
     }
+
+    /**
+     * This Kilobyte Method group all Kilobyte Converter.
+     * Option:
+     *      1. KiloByte to Byte
+     *      2. KiloByte to Megabyte
+     *      3. KiloByte to Gigabyte
+     *      4. KiloByte to Terabyte
+     *      5. KiloByte to Petabyte
+     * @param convertOption take option as integer.
+     */
     private void Kilobyte (int convertOption){
         switch (convertOption){
             case 1: System.out.println("    Kilobyte To Byte: ");
@@ -463,6 +503,17 @@ public class StorageConverter {
                 break;
         }
     }
+
+    /**
+     * This Megabyte Method group all Megabyte Converter.
+     * Option:
+     *      1. MegaByte to Byte
+     *      2. MegaByte to Kilobyte
+     *      3. MegaByte to Gigabyte
+     *      4. MegaByte to Terabyte
+     *      5. MegaByte to Petabyte
+     * @param convertOption take option as integer.
+     */
     private void Megabyte (int convertOption){
         switch (convertOption){
             case 1: System.out.println("    Megabyte To Byte: ");
@@ -512,6 +563,17 @@ public class StorageConverter {
                 break;
         }
     }
+
+    /**
+     * This Gigabyte Method group all Gigabyte Converter.
+     * Option:
+     *      1. GigaByte to Byte
+     *      2. GigaByte to Kilobyte
+     *      3. GigaByte to Megabyte
+     *      4. GigaByte to Terabyte
+     *      5. GigaByte to Petabyte
+     * @param convertOption take option as integer.
+     */
     private void Gigabyte (int convertOption){
         switch (convertOption){
             case 1: System.out.println("    Gigabyte To Byte: ");
@@ -561,6 +623,17 @@ public class StorageConverter {
                 break;
         }
     }
+
+    /**
+     * This Terabyte Method group all Terabyte Converter.
+     * Option:
+     *      1. TeraByte to Byte
+     *      2. TeraByte to Kilobyte
+     *      3. TeraByte to Megabyte
+     *      4. TeraByte to Gigabyte
+     *      5. TeraByte to Petabyte
+     * @param convertOption take option as integer.
+     */
     private void Terabyte (int convertOption){
         switch (convertOption){
             case 1: System.out.println("    Terabyte To Byte: ");
@@ -610,6 +683,17 @@ public class StorageConverter {
                 break;
         }
     }
+
+    /**
+     * This Petabyte Method group all Petabyte Converter.
+     * Option:
+     *      1. PetaByte to Byte
+     *      2. PetaByte to Kilobyte
+     *      3. PetaByte to Megabyte
+     *      4. PetaByte to Gigabyte
+     *      5. PetaByte to Terabyte
+     * @param convertOption take option as integer.
+     */
     private void Petabyte (int convertOption){
         switch (convertOption){
             case 1: System.out.println("    Petabyte To Byte: ");

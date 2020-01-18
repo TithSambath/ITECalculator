@@ -8,7 +8,7 @@ import java.util.Scanner;
 class Bitwise{
 
     /**
-     * This Method is use to solve true or false base on AND Gate.
+     * AND operator copies a bit to the result if it exists in both operands
      * @param firstValue Integer number.
      * @param secondValue Integer number.
      * @return value as an integer.
@@ -18,7 +18,7 @@ class Bitwise{
     }
 
     /**
-     * This Method is use to solve true or false base on OR Gate.
+     * OR operator copies a bit if it exists in either operand
      * @param firstValue Integer number.
      * @param secondValue Integer number.
      * @return value as an integer.
@@ -28,7 +28,7 @@ class Bitwise{
     }
 
     /**
-     * This Method is use to solve true or false base on XOR Gate.
+     * XOR operator copies a bit if it is set in only one of the operand but not both
      * @param firstValue Integer number.
      * @param secondValue Integer number.
      * @return value as an integer.
@@ -38,7 +38,7 @@ class Bitwise{
     }
 
     /**
-     * This Method is use to inverse number by add 1 and then Multiply -1.
+     * This Bitwise inversion is use to inverse number by add 1 and then Multiply -1.
      * @param value Integer number.
      * @return value as an integer.
      */
@@ -47,7 +47,7 @@ class Bitwise{
     }
 
     /**
-     * This Method is use to shift our number to the left but number of shift.
+     * Left shift operator. The left operands value is moved left by the number of bits specified by the right operand
      * @param value Integer number.
      * @param number_of_shift shift time.
      * @return value as an integer.
@@ -57,7 +57,7 @@ class Bitwise{
     }
 
     /**
-     * This Method is use to shift our number to the right but number of shift.
+     * Right shift operator. The left operands value is moved right by the number of bits specified by the right operand
      * @param value Integer number.
      * @param number_of_shift shift time.
      * @return value as an integer.
@@ -68,7 +68,14 @@ class Bitwise{
 
     // Create Function for using to call each of above Method to use in main function:
     /**
-     * This funtion is use to call each operators from Bitwise Method.
+     * This function is use to call each operators from Bitwise Method.
+     * Option:
+     *      1.  AND Operator
+     *      2.  OR Operator
+     *      3.  XOR Operator
+     *      4.  Bit-wise inversion
+     *      5.  Left Shift Operator
+     *      6.  Right Shift Operator
      * @param option is an user choice from 1 to 6
      */
     void calledBitwiseOperators (int option){

@@ -12,22 +12,8 @@ public class NumberSystemConversion {
 
     private long binaryNumber;
     private ArrayList<Long> elementList = new ArrayList<Long>(1); // this one is use every where in here so after use need to clear it.
-    /*
-       Instruction to convert from one number system to another:
-            1.Think of the user input value as any number system
-              depend on each parameter of the function that its
-              use.
-            2.Convert all those number system by using
-               all this (Predefine function) function
-                Integer.parseInt();
-                Integer.toString();
-                Integer.toHex();
-                Integer.toBinaryString();
-                //This 4 function above take string as a parameter.//
-               also use this user-define function: binary2Decimal(int binary);
-               to convert all any number system to decimal then convert it to
-               what user number system want.
-     */
+    private checkingUserInput CheckingUserInput = new checkingUserInput();
+
 // Binary number system conversion:
     /**
      * This binary2Decimal is use to convert from Binary system to Decimal system.
@@ -222,7 +208,7 @@ public class NumberSystemConversion {
     /**
      * This Decimal2Binary Method is use to convert from Decimal to Binary number system.
      * @param decimal parameter take value as decimal
-     * @return
+     * @return value as long.
      */
     long Decimal2Binary (long decimal) {
         short index = 0;
@@ -242,7 +228,7 @@ public class NumberSystemConversion {
     /**
      * This Decimal2Octal Method is use to convert from Decimal to Octal number system.
      * @param decimal parameter take value as decimal
-     * @return
+     * @return value as long data.
      */
     long Decimal2Octal (long decimal) {
         long binaryData = Decimal2Binary(decimal);
@@ -252,7 +238,6 @@ public class NumberSystemConversion {
     /**
      * This Decimal2Hexadecimal Method is use to convert from Decimal to Hexadecimal number system.
      * @param decimal parameter take value as decimal
-     * @return
      */
     void Decimal2Hexadecimal (long decimal) {
        long binaryData = Decimal2Binary(decimal);
@@ -260,80 +245,106 @@ public class NumberSystemConversion {
     }
 
     /*Hexadecimal to any various type of number system:*/
-    long Hexadecimal2Decimal (String hexadecimalValue) {
-        String hexaValue = hexadecimalValue;
-        char[] arrayofChar = hexaValue.toCharArray();
-        for (int i = 0; i < arrayofChar.length; i++){
-            if (arrayofChar[i] == '1'){
-                elementList.add(i,1L);
-            }else if (arrayofChar[i] == '2'){
-                elementList.add(i,2L);
-            }else if (arrayofChar[i] == '3'){
-                elementList.add(i,3L);
-            }else if (arrayofChar[i] == '4'){
-                elementList.add(i,4L);
-            }else if (arrayofChar[i] == '5'){
-                elementList.add(i,5L);
-            }else if (arrayofChar[i] == '6'){
-                elementList.add(i,6L);
-            }else if (arrayofChar[i] == '7'){
-                elementList.add(i,7L);
-            }else if (arrayofChar[i] == '8'){
-                elementList.add(i,8L);
-            }else if (arrayofChar[i] == '9'){
-                elementList.add(i,9L);
-            }else if (arrayofChar[i] == 'A' || arrayofChar[i] == 'a'){
-                elementList.add(i,10L);
-            }else if (arrayofChar[i] == 'B' || arrayofChar[i] == 'b'){
-                elementList.add(i,11L);
-            }else if (arrayofChar[i] == 'C' || arrayofChar[i] == 'c'){
-                elementList.add(i,12L);
-            }else if (arrayofChar[i] == 'D' || arrayofChar[i] == 'd'){
-                elementList.add(i,13L);
-            }else if (arrayofChar[i] == 'E' || arrayofChar[i] == 'e'){
-                elementList.add(i,14L);
-            }else if (arrayofChar[i] == 'F' || arrayofChar[i] == 'f'){
-                elementList.add(i,15L);
+
+    /**
+     * This Method is use to convert from Hexadecimal to Decimal.
+     * @param hexadecimalValue take value input as string.
+     * @return value as decimal.
+     */
+        long Hexadecimal2Decimal (String hexadecimalValue) {
+            String hexaValue = hexadecimalValue;
+            char[] arrayofChar = hexaValue.toCharArray();
+            for (int i = 0; i < arrayofChar.length; i++){
+                if (arrayofChar[i] == '1'){
+                    elementList.add(i,1L);
+                }else if (arrayofChar[i] == '2'){
+                    elementList.add(i,2L);
+                }else if (arrayofChar[i] == '3'){
+                    elementList.add(i,3L);
+                }else if (arrayofChar[i] == '4'){
+                    elementList.add(i,4L);
+                }else if (arrayofChar[i] == '5'){
+                    elementList.add(i,5L);
+                }else if (arrayofChar[i] == '6'){
+                    elementList.add(i,6L);
+                }else if (arrayofChar[i] == '7'){
+                    elementList.add(i,7L);
+                }else if (arrayofChar[i] == '8'){
+                    elementList.add(i,8L);
+                }else if (arrayofChar[i] == '9'){
+                    elementList.add(i,9L);
+                }else if (arrayofChar[i] == 'A' || arrayofChar[i] == 'a'){
+                    elementList.add(i,10L);
+                }else if (arrayofChar[i] == 'B' || arrayofChar[i] == 'b'){
+                    elementList.add(i,11L);
+                }else if (arrayofChar[i] == 'C' || arrayofChar[i] == 'c'){
+                    elementList.add(i,12L);
+                }else if (arrayofChar[i] == 'D' || arrayofChar[i] == 'd'){
+                    elementList.add(i,13L);
+                }else if (arrayofChar[i] == 'E' || arrayofChar[i] == 'e'){
+                    elementList.add(i,14L);
+                }else if (arrayofChar[i] == 'F' || arrayofChar[i] == 'f'){
+                    elementList.add(i,15L);
+                }
+            }// end of loop.
+            // Generate value to Decimal:
+            long DecimalValue = 0;
+            int power = arrayofChar.length;
+            for (int i = 0; i < arrayofChar.length; i++){
+                power = power - 1; // power start from n - 1 coz our value store as sequence already.
+                long Decimal_eachValue = (long) (elementList.get(i) * Math.pow(16,power));
+                DecimalValue += Decimal_eachValue;
             }
-        }// end of loop.
-        // Generate value to Decimal:
-        long DecimalValue = 0;
-        int power = arrayofChar.length;
-        for (int i = 0; i < arrayofChar.length; i++){
-            power = power - 1; // power start from n - 1 coz our value store as sequence already.
-            long Decimal_eachValue = (long) (elementList.get(i) * Math.pow(16,power));
-            DecimalValue += Decimal_eachValue;
+            elementList.clear();
+            // Result output:
+            return DecimalValue;
         }
-        elementList.clear();
-        // Result output:
-        return DecimalValue;
-    }
-    long Hexadecimal2Binary (String hexadecimalValue){
-        long DecimalValue = Hexadecimal2Decimal(hexadecimalValue);
-        long BinaryValue = Decimal2Binary(DecimalValue);
-        return BinaryValue;
-    }
-    long Hexadecimal2Octal (String hexadecimalValue){
-        long DecimalValue = Hexadecimal2Decimal(hexadecimalValue);
-        long Octal = Decimal2Octal(DecimalValue);
-        return Octal;
-    }
+
+    /**
+     * This method is use to convert from Hexadecimal to Binary.
+      * @param hexadecimalValue take value input as string.
+     * @return value as binary string.
+     */
+        long Hexadecimal2Binary (String hexadecimalValue){
+            long DecimalValue = Hexadecimal2Decimal(hexadecimalValue);
+            long BinaryValue = Decimal2Binary(DecimalValue);
+            return BinaryValue;
+        }
+
+    /**
+     * This method is use to convert from Hexadecimal to Octal
+      * @param hexadecimalValue take value input as string.
+     * @return value as Integer that has long data type.
+     */
+        long Hexadecimal2Octal (String hexadecimalValue){
+            long DecimalValue = Hexadecimal2Decimal(hexadecimalValue);
+            long Octal = Decimal2Octal(DecimalValue);
+            return Octal;
+        }
 
     /*Function that create for call to use in main function*/
         // declare variable for use to receive result or answer:
             private String value_as_string;
             private long answer;
             Scanner scan = new Scanner(System.in);
-    private void Binary (int convertOption){
-        int value;
+
+    /**
+     * This Binary Method group all of binary Conversion.
+     * Option:
+     *      1. Binary to Octal
+     *      2. Binary to Decimal
+     *      3. Binary to Hexadecimal
+      * @param convertOption take option value as integer.
+     */
+         private void Binary (int convertOption){
         switch (convertOption){
             case 1: System.out.println("      Binary to Octal");
                 System.out.println("Enter number of Binary here: ");
                 value_as_string = scan.next();
-                if (isValidBinary(value_as_string)){
+                if (CheckingUserInput.isValidBinary(value_as_string)){
                     answer = binary2Octal(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidBinary(value_as_string)) {
+                    while (!CheckingUserInput.isValidBinary(value_as_string)) {
                         System.out.println("Binary number consist only 0 and 1.");
                         System.out.println("Enter number of Binary again here: ");
                         value_as_string = scan.next();
@@ -346,10 +357,10 @@ public class NumberSystemConversion {
             case 2: System.out.println("      Binary to Decimal");
                 System.out.println("Enter number of Binary here: ");
                 value_as_string = scan.next();
-                if (isValidBinary(value_as_string)){
+                if (CheckingUserInput.isValidBinary(value_as_string)){
                     answer = binary2Decimal(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidBinary(value_as_string)){
+                    while (!CheckingUserInput.isValidBinary(value_as_string)){
                         System.out.println("Binary number consist only 0 and 1.");
                         System.out.println("Enter number of Binary again here: ");
                         value_as_string = scan.next();
@@ -362,10 +373,10 @@ public class NumberSystemConversion {
             case 3: System.out.println("   Binary to Hexadecimal");
                 System.out.println("Enter number of Binary here: ");
                 value_as_string = scan.next();
-                if (isValidBinary(value_as_string)){
+                if (CheckingUserInput.isValidBinary(value_as_string)){
                     binary2Hexadecimal(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidBinary(value_as_string)){
+                    while (!CheckingUserInput.isValidBinary(value_as_string)){
                         System.out.println("Binary number consist only 0 and 1.");
                         System.out.println("Enter number of Binary again here: ");
                         value_as_string = scan.next();
@@ -375,16 +386,25 @@ public class NumberSystemConversion {
                 break;
         }
     }
-    private void Octal (int convertOption){
+
+    /**
+     * This Octal Method group all octal Conversion.
+     * Option:
+     *      1. Octal to Binary
+     *      2. Octal to Decimal
+     *      3. Octal to Hexadecimal
+     * @param convertOption take option value as integer
+     */
+        private void Octal (int convertOption){
         switch (convertOption){
             case 1: System.out.println("      Octal to Binary: ");
                 System.out.println("Enter number of Octal here: ");
                 value_as_string = scan.next();
                 /*Prevent when there is something wrong.*/
-                if (isValidOctal(value_as_string)){
+                if (CheckingUserInput.isValidOctal(value_as_string)){
                     answer = Octal2Binary(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidOctal(value_as_string)){
+                    while (!CheckingUserInput.isValidOctal(value_as_string)){
                         System.out.println("Octal digit range from 0-7.");
                         System.out.println("Enter number of Octal again here:");
                         value_as_string = scan.next();
@@ -398,10 +418,10 @@ public class NumberSystemConversion {
                 System.out.println("Enter number of Octal here: ");
                 value_as_string = scan.next();
                 /*Prevent when there is something wrong.*/
-                if (isValidOctal(value_as_string)){
+                if (CheckingUserInput.isValidOctal(value_as_string)){
                     answer = Octal2Decimal(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidOctal(value_as_string)){
+                    while (!CheckingUserInput.isValidOctal(value_as_string)){
                         System.out.println("Octal digit range from 0-7.");
                         System.out.println("Enter number of Octal again here:");
                         value_as_string = scan.next();
@@ -415,10 +435,10 @@ public class NumberSystemConversion {
                 System.out.println("Enter number of Octal here: ");
                 value_as_string = scan.next();
                 /*Prevent when there is something wrong.*/
-                if (isValidOctal(value_as_string)){
+                if (CheckingUserInput.isValidOctal(value_as_string)){
                     Octal2Hexadecimal(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidOctal(value_as_string)){
+                    while (!CheckingUserInput.isValidOctal(value_as_string)){
                         System.out.println("Octal digit range from 0-7.");
                         System.out.println("Enter number of Octal again here: ");
                         value_as_string = scan.next();
@@ -428,16 +448,25 @@ public class NumberSystemConversion {
                 break;
         }
     }
-    private void Decimal (int convertOption){
+
+    /**
+     * This Decimal Method group all Decimal Conversion.
+     * Option:
+     *      1. Decimal to Binary
+     *      2. Decimal to Octal
+     *      3. Decimal to Hexadecimal
+     * @param convertOption take option value as integer
+     */
+        private void Decimal (int convertOption){
         int value;
         switch (convertOption) {
             case 1: System.out.println("      Decimal to Binary: ");
                 System.out.println("Enter number of Decimal here: ");
                 value_as_string = scan.next();
-                if (isValidDecimal(value_as_string)){
+                if (CheckingUserInput.isValidDecimal(value_as_string)){
                     answer = Decimal2Binary(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidDecimal(value_as_string)){
+                    while (!CheckingUserInput.isValidDecimal(value_as_string)){
                         System.out.println("System valid only Decimal number: 0-9\n");
                         System.out.print("Enter number of Decimal again here: ");
                         value_as_string = scan.next();
@@ -450,10 +479,10 @@ public class NumberSystemConversion {
             case 2: System.out.println("      Decimal to Octal: ");
                 System.out.println("Enter number of Decimal here: ");
                 value_as_string = scan.next();
-                if (isValidDecimal(value_as_string)){
+                if (CheckingUserInput.isValidDecimal(value_as_string)){
                     answer = Decimal2Octal(Long.parseLong(value_as_string));
                 }else{
-                    while (!isValidDecimal(value_as_string)){
+                    while (!CheckingUserInput.isValidDecimal(value_as_string)){
                         System.out.println("System valid only Decimal number: 0-9\n");
                         System.out.print("Enter number of Decimal again here: ");
                         value_as_string = scan.next();
@@ -466,10 +495,10 @@ public class NumberSystemConversion {
             case 3: System.out.println("   Decimal to Hexadecimal: ");
                 System.out.println("Enter number of Decimal here: ");
                 value_as_string = scan.next();
-                if (isValidDecimal(value_as_string)){
+                if (CheckingUserInput.isValidDecimal(value_as_string)){
                     Decimal2Hexadecimal(Long.parseLong(value_as_string));
                 }else {
-                    while (!isValidDecimal(value_as_string)){
+                    while (!CheckingUserInput.isValidDecimal(value_as_string)) {
                         System.out.println("System valid only Decimal number: 0-9\n");
                         System.out.print("Enter number of Decimal again here: ");
                         value_as_string = scan.next();
@@ -479,7 +508,16 @@ public class NumberSystemConversion {
                 break;
         }
     }
-    private void Hexadecimal (int convertOption) {
+
+    /**
+     * This Hexadecimal Method group all Hexadecimal Conversion.
+     * Option:
+     *      1. Hexadecimal to Binary
+     *      2. Hexaadecimal to Octal
+     *      3. Hexadecimal to Decimal
+     * @param convertOption take option value as integer
+     */
+        private void Hexadecimal (int convertOption) {
         String Hexa_string_Value;
         long answer;
         Scanner scan = new Scanner(System.in);
@@ -487,10 +525,10 @@ public class NumberSystemConversion {
             case 1: System.out.println("     Hexadecimal to Binary: ");
                     System.out.println("Enter number of Hexadecimal here: ");
                     Hexa_string_Value = scan.next();
-                    if (isValidHexadecimal(Hexa_string_Value)){
+                    if (CheckingUserInput.isValidHexadecimal(Hexa_string_Value)){
                         answer = Hexadecimal2Binary(Hexa_string_Value);
                     }else {
-                        while (!isValidHexadecimal(Hexa_string_Value)){
+                        while (!CheckingUserInput.isValidHexadecimal(Hexa_string_Value)){
                             System.out.println("Invalid Hexadecimal number system.");
                             System.out.print("Enter number of Hexadecimal again here: ");
                             Hexa_string_Value = scan.next();
@@ -502,10 +540,10 @@ public class NumberSystemConversion {
             case 2: System.out.println("      Hexadecimal to Octal: ");
                     System.out.println("Enter number of Hexadecimal here: ");
                     Hexa_string_Value = scan.next();
-                    if (isValidHexadecimal(Hexa_string_Value)){
+                    if (CheckingUserInput.isValidHexadecimal(Hexa_string_Value)){
                         answer = Hexadecimal2Octal(Hexa_string_Value);
                     }else {
-                        while (!isValidHexadecimal(Hexa_string_Value)){
+                        while (!CheckingUserInput.isValidHexadecimal(Hexa_string_Value)){
                             System.out.println("Invalid Hexadecimal number system.");
                             System.out.print("Enter number of Hexadecimal again here: ");
                             Hexa_string_Value = scan.next();
@@ -517,10 +555,10 @@ public class NumberSystemConversion {
             case 3: System.out.println("      Hexadecimal to Decimal: ");
                     System.out.println("Enter number of Hexadecimal here: ");
                     Hexa_string_Value = scan.next();
-                    if (isValidHexadecimal(Hexa_string_Value)){
+                    if (CheckingUserInput.isValidHexadecimal(Hexa_string_Value)){
                         answer = Hexadecimal2Decimal(Hexa_string_Value);
                     }else {
-                        while (!isValidHexadecimal(Hexa_string_Value)){
+                        while (!CheckingUserInput.isValidHexadecimal(Hexa_string_Value)){
                             System.out.println("Invalid Hexadecimal number system.");
                             System.out.print("Enter number of Hexadecimal again here: ");
                             Hexa_string_Value = scan.next();
@@ -532,7 +570,18 @@ public class NumberSystemConversion {
         }
     }
 
-    private void calledNumberSystemConverter(int mainOption, int subMenuOption){
+    /**
+     * This method is use to call all Number System Converter.
+     * Main Option:
+     *      1. Binary Converter.
+     *      2. Octal Converter.
+     *      3. Decimal Converter.
+     *      4. Hexadecimal Converter.
+     * In the Sub-Menu there is a specific Converter.
+     * @param mainOption take input as integer.
+     * @param subMenuOption take input as integer.
+     */
+        private void calledNumberSystemConverter(int mainOption, int subMenuOption){
         switch (mainOption) {
             case 1: Binary(subMenuOption);break;
             case 2: Octal(subMenuOption);break;
@@ -540,11 +589,17 @@ public class NumberSystemConversion {
             case 4: Hexadecimal(subMenuOption);break;
         }
     }
+
     /**
      * This function is use to display subMenu of number system conversion.
-     * @param mainOption
+     * Main Option:
+     *      1. Binary Converter.
+     *      2. Octal Converter.
+     *      3. Decimal Converter.
+     *      4. Hexadecimal Converter.
+     * @param mainOption option value as interger.
      */
-    void numberSystemConversionSubMenu(int mainOption){
+        void numberSystemConversionSubMenu(int mainOption){
         int subMenuOption;
         switch (mainOption){
             case 1: System.out.println("Binary: ");
@@ -584,81 +639,87 @@ public class NumberSystemConversion {
     }
 
     /*Protected Method*/
-    Boolean isValidBinary (String BinaryValue){
-        char[] set_of_char = BinaryValue.toCharArray();
-        Boolean isAllow = true;
-        for (int i = 0; i < set_of_char.length; i++){
-            Boolean condition = Character.isDigit(set_of_char[i]);
-            if (!condition){
-                isAllow = false;
-                break;
-            }
-        }
-        if (isAllow){
+
+    /**
+     * This Nested class is contain all function that use to check user input.
+     */
+        class checkingUserInput {
+        Boolean isValidBinary (String BinaryValue){
+            char[] set_of_char = BinaryValue.toCharArray();
+            Boolean isAllow = true;
             for (int i = 0; i < set_of_char.length; i++){
-                Boolean conditionBiggerthan = set_of_char[i] > '1';
-                Boolean conditionSmallerthan = set_of_char[i] < '0';
-                if (conditionBiggerthan || conditionSmallerthan){
+                Boolean condition = Character.isDigit(set_of_char[i]);
+                if (!condition){
                     isAllow = false;
                     break;
                 }
             }
-        }
-        return isAllow;
-    }
-    Boolean isValidOctal (String OctalValue){
-        char[] set_of_char = OctalValue.toCharArray();
-        Boolean isAllow = true;
-        for (int i = 0; i < set_of_char.length; i++){
-            Boolean condition = Character.isDigit(set_of_char[i]);
-            if (!condition){
-                isAllow = false;
-                break;
+            if (isAllow){
+                for (int i = 0; i < set_of_char.length; i++){
+                    Boolean conditionBiggerthan = set_of_char[i] > '1';
+                    Boolean conditionSmallerthan = set_of_char[i] < '0';
+                    if (conditionBiggerthan || conditionSmallerthan){
+                        isAllow = false;
+                        break;
+                    }
+                }
             }
+            return isAllow;
         }
-        if (isAllow){
+        Boolean isValidOctal (String OctalValue){
+            char[] set_of_char = OctalValue.toCharArray();
+            Boolean isAllow = true;
             for (int i = 0; i < set_of_char.length; i++){
-                Boolean condition = set_of_char[i] >= '8';
-                if (condition){
+                Boolean condition = Character.isDigit(set_of_char[i]);
+                if (!condition){
                     isAllow = false;
                     break;
                 }
             }
-        }
-        return isAllow;
-    }
-    Boolean isValidDecimal (String DecimalValue){
-        char[] set_of_char = DecimalValue.toCharArray();
-        Boolean isAllow = true;
-        for (int i = 0; i < set_of_char.length;i++){
-            Boolean condition = Character.isDigit(set_of_char[i]);
-            if (!condition){
-                isAllow = false;
-                break;
+            if (isAllow){
+                for (int i = 0; i < set_of_char.length; i++){
+                    Boolean condition = set_of_char[i] >= '8';
+                    if (condition){
+                        isAllow = false;
+                        break;
+                    }
+                }
             }
+            return isAllow;
         }
-        return isAllow;
-    }
-    Boolean isValidHexadecimal (String Hexadecimal){
-        char[] set_of_char = Hexadecimal.toCharArray();
-        Boolean isAllow = true;
-        for (int i = 0; i < set_of_char.length;i++){
-            Boolean condition = Character.isLetterOrDigit(set_of_char[i]);
-            if (!condition){
-                isAllow = false;
-                break;
-            }
-        }
-        if (isAllow){
-            for (int i = 0; i < set_of_char.length; i++){
-                Boolean conditionuppercase = Character.toUpperCase(set_of_char[i]) <= 'F';
-                if (!conditionuppercase){
+        Boolean isValidDecimal (String DecimalValue){
+            char[] set_of_char = DecimalValue.toCharArray();
+            Boolean isAllow = true;
+            for (int i = 0; i < set_of_char.length;i++){
+                Boolean condition = Character.isDigit(set_of_char[i]);
+                if (!condition){
                     isAllow = false;
                     break;
                 }
             }
+            return isAllow;
         }
-        return isAllow;
+        Boolean isValidHexadecimal (String Hexadecimal){
+            char[] set_of_char = Hexadecimal.toCharArray();
+            Boolean isAllow = true;
+            for (int i = 0; i < set_of_char.length;i++){
+                Boolean condition = Character.isLetterOrDigit(set_of_char[i]);
+                if (!condition){
+                    isAllow = false;
+                    break;
+                }
+            }
+            if (isAllow){
+                for (int i = 0; i < set_of_char.length; i++){
+                    Boolean conditionuppercase = Character.toUpperCase(set_of_char[i]) <= 'F';
+                    if (!conditionuppercase){
+                        isAllow = false;
+                        break;
+                    }
+                }
+            }
+            return isAllow;
+        }
     }
 }
 
