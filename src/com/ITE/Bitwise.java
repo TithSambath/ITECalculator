@@ -69,13 +69,13 @@ class Bitwise{
     // Create Function for using to call each of above Method to use in main function:
     /**
      * This function is use to call each operators from Bitwise Method.
-     * Option:
-     *      1.  AND Operator
-     *      2.  OR Operator
-     *      3.  XOR Operator
-     *      4.  Bit-wise inversion
-     *      5.  Left Shift Operator
-     *      6.  Right Shift Operator
+     * Option: <br>
+     *      1.  AND Operator<br>
+     *      2.  OR Operator <br>
+     *      3.  XOR Operator <br>
+     *      4.  Bit-wise inversion <br>
+     *      5.  Left Shift Operator <br>
+     *      6.  Right Shift Operator <br>
      * @param option is an user choice from 1 to 6
      */
     void calledBitwiseOperators (int option){

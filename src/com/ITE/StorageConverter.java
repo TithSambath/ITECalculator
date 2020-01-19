@@ -2,6 +2,9 @@ package com.ITE;
 import java.lang.Math;
 import java.util.Scanner;
 
+/**
+ * This class contain all the method that can be use to convert number of storage converter.
+ */
 public class StorageConverter {
 
     // Byte to any various type:
@@ -287,13 +290,13 @@ public class StorageConverter {
     // Create Function for using to call each of above Method to use in main function:
     /**
      * This function is use to call each converter method from StorageConverter class to use in main class.
-     * Menu Option:
-     *      1. Byte
-     *      2. KiloByte
-     *      3. MegaByte
-     *      4. GigaByte
-     *      5. TeraByte
-     *      6. PetaByte
+     * Menu Option: <br>
+     *      1. Byte <br>
+     *      2. KiloByte <br>
+     *      3. MegaByte <br>
+     *      4. GigaByte <br>
+     *      5. TeraByte <br>
+     *      6. PetaByte <br>
      * @param menuOption is an user choice from 1 to 6
      * @param converter is an specific converter option (number represented shown in menu)
      */
@@ -386,12 +389,12 @@ public class StorageConverter {
 
     /**
      * This Byte Method group all byte Converter.
-     * Option:
-     *      1. Byte to Kilobyte
-     *      2. Byte to Megabyte
-     *      3. Byte to Gigabyte
-     *      4. Byte to Terabyte
-     *      5. Byte to Petabyte
+     * Option: <br>
+     *      1. Byte to Kilobyte <br>
+     *      2. Byte to Megabyte <br>
+     *      3. Byte to Gigabyte <br>
+     *      4. Byte to Terabyte <br>
+     *      5. Byte to Petabyte <br>
      * @param convertOption take option as integer.
      */
     private void Byte (int convertOption){
@@ -446,12 +449,12 @@ public class StorageConverter {
 
     /**
      * This Kilobyte Method group all Kilobyte Converter.
-     * Option:
-     *      1. KiloByte to Byte
-     *      2. KiloByte to Megabyte
-     *      3. KiloByte to Gigabyte
-     *      4. KiloByte to Terabyte
-     *      5. KiloByte to Petabyte
+     * Option: <br>
+     *      1. KiloByte to Byte <br>
+     *      2. KiloByte to Megabyte <br>
+     *      3. KiloByte to Gigabyte <br>
+     *      4. KiloByte to Terabyte <br>
+     *      5. KiloByte to Petabyte <br>
      * @param convertOption take option as integer.
      */
     private void Kilobyte (int convertOption){
@@ -506,12 +509,12 @@ public class StorageConverter {
 
     /**
      * This Megabyte Method group all Megabyte Converter.
-     * Option:
-     *      1. MegaByte to Byte
-     *      2. MegaByte to Kilobyte
-     *      3. MegaByte to Gigabyte
-     *      4. MegaByte to Terabyte
-     *      5. MegaByte to Petabyte
+     * Option: <br>
+     *      1. MegaByte to Byte <br>
+     *      2. MegaByte to Kilobyte <br>
+     *      3. MegaByte to Gigabyte <br>
+     *      4. MegaByte to Terabyte <br>
+     *      5. MegaByte to Petabyte <br>
      * @param convertOption take option as integer.
      */
     private void Megabyte (int convertOption){
@@ -566,12 +569,12 @@ public class StorageConverter {
 
     /**
      * This Gigabyte Method group all Gigabyte Converter.
-     * Option:
-     *      1. GigaByte to Byte
-     *      2. GigaByte to Kilobyte
-     *      3. GigaByte to Megabyte
-     *      4. GigaByte to Terabyte
-     *      5. GigaByte to Petabyte
+     * Option: <br>
+     *      1. GigaByte to Byte <br>
+     *      2. GigaByte to Kilobyte <br>
+     *      3. GigaByte to Megabyte <br>
+     *      4. GigaByte to Terabyte <br>
+     *      5. GigaByte to Petabyte <br>
      * @param convertOption take option as integer.
      */
     private void Gigabyte (int convertOption){
@@ -626,12 +629,12 @@ public class StorageConverter {
 
     /**
      * This Terabyte Method group all Terabyte Converter.
-     * Option:
-     *      1. TeraByte to Byte
-     *      2. TeraByte to Kilobyte
-     *      3. TeraByte to Megabyte
-     *      4. TeraByte to Gigabyte
-     *      5. TeraByte to Petabyte
+     * Option: <br>
+     *      1. TeraByte to Byte <br>
+     *      2. TeraByte to Kilobyte <br>
+     *      3. TeraByte to Megabyte <br>
+     *      4. TeraByte to Gigabyte <br>
+     *      5. TeraByte to Petabyte <br>
      * @param convertOption take option as integer.
      */
     private void Terabyte (int convertOption){
@@ -686,12 +689,12 @@ public class StorageConverter {
 
     /**
      * This Petabyte Method group all Petabyte Converter.
-     * Option:
-     *      1. PetaByte to Byte
-     *      2. PetaByte to Kilobyte
-     *      3. PetaByte to Megabyte
-     *      4. PetaByte to Gigabyte
-     *      5. PetaByte to Terabyte
+     * Option: <br>
+     *      1. PetaByte to Byte <br>
+     *      2. PetaByte to Kilobyte <br>
+     *      3. PetaByte to Megabyte <br>
+     *      4. PetaByte to Gigabyte <br>
+     *      5. PetaByte to Terabyte <br>
      * @param convertOption take option as integer.
      */
     private void Petabyte (int convertOption){

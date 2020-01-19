@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.function.BinaryOperator;
 import java.util.ArrayList;
 /**
- * This class is consist of wide range to perform conversion.
+ * This class consist of wide range to perform conversion.
  */
 public class NumberSystemConversion {
 
@@ -330,10 +330,10 @@ public class NumberSystemConversion {
 
     /**
      * This Binary Method group all of binary Conversion.
-     * Option:
-     *      1. Binary to Octal
-     *      2. Binary to Decimal
-     *      3. Binary to Hexadecimal
+     * Option: <br>
+     *      1. Binary to Octal <br>
+     *      2. Binary to Decimal <br>
+     *      3. Binary to Hexadecimal <br>
       * @param convertOption take option value as integer.
      */
          private void Binary (int convertOption){
@@ -389,10 +389,10 @@ public class NumberSystemConversion {
 
     /**
      * This Octal Method group all octal Conversion.
-     * Option:
-     *      1. Octal to Binary
-     *      2. Octal to Decimal
-     *      3. Octal to Hexadecimal
+     * Option: <br>
+     *      1. Octal to Binary <br>
+     *      2. Octal to Decimal <br>
+     *      3. Octal to Hexadecimal <br>
      * @param convertOption take option value as integer
      */
         private void Octal (int convertOption){
@@ -451,10 +451,10 @@ public class NumberSystemConversion {
 
     /**
      * This Decimal Method group all Decimal Conversion.
-     * Option:
-     *      1. Decimal to Binary
-     *      2. Decimal to Octal
-     *      3. Decimal to Hexadecimal
+     * Option: <br>
+     *      1. Decimal to Binary <br>
+     *      2. Decimal to Octal <br>
+     *      3. Decimal to Hexadecimal <br>
      * @param convertOption take option value as integer
      */
         private void Decimal (int convertOption){
@@ -511,10 +511,10 @@ public class NumberSystemConversion {
 
     /**
      * This Hexadecimal Method group all Hexadecimal Conversion.
-     * Option:
-     *      1. Hexadecimal to Binary
-     *      2. Hexaadecimal to Octal
-     *      3. Hexadecimal to Decimal
+     * Option: <br>
+     *      1. Hexadecimal to Binary <br>
+     *      2. Hexaadecimal to Octal <br>
+     *      3. Hexadecimal to Decimal <br>
      * @param convertOption take option value as integer
      */
         private void Hexadecimal (int convertOption) {
@@ -572,12 +572,12 @@ public class NumberSystemConversion {
 
     /**
      * This method is use to call all Number System Converter.
-     * Main Option:
-     *      1. Binary Converter.
-     *      2. Octal Converter.
-     *      3. Decimal Converter.
-     *      4. Hexadecimal Converter.
-     * In the Sub-Menu there is a specific Converter.
+     * Main Option: <br>
+     *      1. Binary Converter. <br>
+     *      2. Octal Converter. <br>
+     *      3. Decimal Converter. <br>
+     *      4. Hexadecimal Converter. <br>
+     * In the Sub-Menu there is a specific Converter. <br>
      * @param mainOption take input as integer.
      * @param subMenuOption take input as integer.
      */
@@ -592,11 +592,11 @@ public class NumberSystemConversion {
 
     /**
      * This function is use to display subMenu of number system conversion.
-     * Main Option:
-     *      1. Binary Converter.
-     *      2. Octal Converter.
-     *      3. Decimal Converter.
-     *      4. Hexadecimal Converter.
+     * Main Option: <br>
+     *      1. Binary Converter. <br>
+     *      2. Octal Converter. <br>
+     *      3. Decimal Converter. <br>
+     *      4. Hexadecimal Converter. <br>
      * @param mainOption option value as interger.
      */
         void numberSystemConversionSubMenu(int mainOption){

@@ -3,6 +3,9 @@ package com.ITE;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class contain all method that can be use to do binary arithmetic.
+ */
 public class BinaryArithmetic {
     // create object from class StorageConverter in order to us its Protected Method:
         NumberSystemConversion check = new NumberSystemConversion();
@@ -210,12 +213,10 @@ public class BinaryArithmetic {
         needShift needToShift = new needShift();
         Zero = needToShift.rightShift(Zero,dividend.length());
         String Answer = Zero;
-        System.out.println(Zero);
         if (!dividend.equals(Zero)) {
             while (!dividend.equals(Zero)){
                 dividend = complement.subtractWith2ndComplement(dividend,divisor);
                 Answer = binaryAdd(Answer,"1");
-                //System.out.println("HELLO");
             }
             return Answer;
         }else {
@@ -360,7 +361,7 @@ public class BinaryArithmetic {
     }
 
     /**
-     * This needShift class group all shift function that have been use in these class.
+     * This needShift class group all shift function that have been use in this outer class.
      */
     private class needShift {
         /**
@@ -412,7 +413,7 @@ public class BinaryArithmetic {
     }
 
     /**
-     * This Complement class group all complement function that have been use in this class.
+     * This Complement class group all complement function that have been use in this outer class class.
      */
     public class Complement {
         /**
