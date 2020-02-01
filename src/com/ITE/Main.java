@@ -39,6 +39,7 @@ public class Main {
         System.out.println("    4. Storage Converter");
         System.out.println("    5. Number System Conversion");
         System.out.println("    6. Binary Arithmetic");
+        System.out.println("    7. Set Operation");
         System.out.println("____________________________________");
 
     // Ask user option:
@@ -127,13 +128,22 @@ public class Main {
                     BinaryArithmetic.callBinaryArithmetic CalledBIArithmetic = binaryArithmetic.new callBinaryArithmetic();
                     CalledBIArithmetic.binaryArithmetic(FunctionOption);
                     break;
+            case 7: System.out.println("____________________________________");
+                    System.out.println("Set Operation: ");
+                    System.out.println("    1. Union");
+                    System.out.println("    2. Intersection");
+                    System.out.println("    3. Difference");
+                    System.out.println("____________________________________");
+                    System.out.println("Enter your option here: ");
+                    FunctionOption = scan.nextInt();
+                    SetTheory set = new SetTheory();
+                    set.calledSetOperation(FunctionOption);
+                    break;
 
 
         }
     }
     static void PreviousMenu (int previousMenu) {
-
-        int MenuOption = 0;
         int FunctionOption = 0;
 
         switch (previousMenu){
@@ -214,8 +224,17 @@ public class Main {
                 BinaryArithmetic.callBinaryArithmetic CalledBIArithmetic = binaryArithmetic.new callBinaryArithmetic();
                 CalledBIArithmetic.binaryArithmetic(FunctionOption);
                 break;
-
-
+            case 7: System.out.println("____________________________________");
+                System.out.println("Set Operation: ");
+                System.out.println("    1. Union");
+                System.out.println("    2. Intersection");
+                System.out.println("    3. Difference");
+                System.out.println("____________________________________");
+                System.out.println("Enter your option here: ");
+                FunctionOption = scan.nextInt();
+                SetTheory set = new SetTheory();
+                set.calledSetOperation(FunctionOption);
+                break;
         }
     }
 
