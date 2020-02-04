@@ -24,7 +24,6 @@ public class SetTheory {
     }
 
     public interface SetDifferenceHelper {
-        ArrayList<String> SetDifference = new ArrayList<>();
         void differenceOperation();
         void Display();
     }
@@ -143,14 +142,14 @@ public class SetTheory {
                     System.out.println("    2. Set Difference of A: Set(B - A)");
                     option = scan.nextInt();
                     switch (option){
-                        case 1: for (String Element_of_thisSetA: setA){
-                                    if (!setB.contains(Element_of_thisSetA)){
-                                        SetDifference.add(Element_of_thisSetA); // Set A - Set B
+                        case 1: for (String Element_of_thisSetB: setB){
+                                    if (setA.contains(Element_of_thisSetB)){
+                                        setA.remove(Element_of_thisSetB); // Set A - Set B
                                     }
                                 }break;
-                        case 2: for (String Element_of_thisSetB: setB){
-                                    if (!setA.contains(Element_of_thisSetB)){
-                                        SetDifference.add(Element_of_thisSetB); // Set B - Set A
+                        case 2: for (String Element_of_thisSetA: setA){
+                                    if (setB.contains(Element_of_thisSetA)){
+                                        setB.remove(Element_of_thisSetA); // Set B - Set A
                                     }
                                 }break;
                     }
@@ -159,9 +158,9 @@ public class SetTheory {
                 @Override
                 public void Display() {
                     if (option == 1){
-                        System.out.println("Set Difference of A: " + SetDifference);
+                        System.out.println("Set Difference of A: " + setA);
                     }else if(option == 2){
-                        System.out.println("Set Difference of B: " + SetDifference);
+                        System.out.println("Set Difference of B: " + setB);
                     }
                 }
             };
