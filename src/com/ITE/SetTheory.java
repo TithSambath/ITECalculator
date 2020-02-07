@@ -1,8 +1,6 @@
 package com.ITE;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class SetTheory {
     // Complement:
@@ -13,19 +11,19 @@ public class SetTheory {
     // create interface:
     public interface UnionHelper {
         ArrayList<String> Union = new ArrayList<>();
-        void unionOperation();
-        void Display();
+        ArrayList<String> unionOperation();
+        void Display(ArrayList<String> union);
     }
 
     public interface IntersectionHelper {
         ArrayList<String> Intersection = new ArrayList<>();
-        void intersectionOperation();
-        void Display();
+        ArrayList<String> intersectionOperation();
+        void Display(ArrayList<String> intersection);
     }
 
     public interface SetDifferenceHelper {
-        void differenceOperation();
-        void Display();
+        ArrayList<String> differenceOperation();
+        void Display(ArrayList<String> difference);
     }
 
     // Method: Create Set
@@ -43,11 +41,14 @@ public class SetTheory {
                 if (element.charAt(i) == ',') {
                     Element = element.substring(startIndex, endIndex); // Cut string ex: 10,11 to 10 and 11
                     startIndex = endIndex + 1;
-                    setA.add(Element);
-
+                    if (!setA.contains(Element)){
+                        setA.add(Element);
+                    }
                 } else if (i == element.length() - 1) {
                     Element = element.substring(startIndex);
-                    setA.add(Element);
+                    if (!setA.contains(Element)){
+                        setA.add(Element);
+                    }
                     // reset value:
                     startIndex = 0;
                     endIndex = 0;
@@ -65,11 +66,15 @@ public class SetTheory {
                 if (element.charAt(i) == ',') {
                     Element = element.substring(startIndex, endIndex); // Cut string ex: 10,11 to 10 and 11
                     startIndex = endIndex + 1;
-                    setB.add(Element);
+                    if (!setB.contains(Element)){
+                        setB.add(Element);
+                    }
 
                 } else if (i == element.length() - 1) {
                     Element = element.substring(startIndex);
-                    setB.add(Element);
+                    if (!setB.contains(Element)) {
+                        setB.add(Element);
+                    }
                     // reset value:
                     startIndex = 0;
                     endIndex = 0;
@@ -83,18 +88,20 @@ public class SetTheory {
     // Union:
         class SetUnion implements UnionHelper {
         @Override
-        public void unionOperation() {
+        public ArrayList<String> unionOperation() {
             // Implement the methodology:
-                Union.addAll(setA);
             for (String s : setB) {
-                if (!Union.contains(s)) {
-                    Union.add(s);
+                if (!setA.contains(s)) {
+                    setA.add(s);
                 }
             }
+            setA.sort(Comparator.comparingInt(Integer::parseInt));
+            return setA;
         }
         @Override
-        public void Display() {
-            System.out.println("Union: " + Union);
+        public void Display(ArrayList<String> union) {
+            System.out.println("Union: " + union);
+            setA.clear();
         }
     }
         void Union(){
@@ -102,41 +109,41 @@ public class SetTheory {
 
             // Create set:
                 createSet();
-                setUnion.unionOperation();
-                setUnion.Display();
+                setUnion.Display(setUnion.unionOperation());
         }
 
     // Intersection:
         void intersection(){
             class setIntersection implements IntersectionHelper{
                 @Override
-                public void intersectionOperation() {
+                public ArrayList<String> intersectionOperation() {
                     for (String Element_of_thisSetA: setA){
                         if (setB.contains(Element_of_thisSetA)){
                             Intersection.add(Element_of_thisSetA);
                         }
                     }
+                    Intersection.sort(Comparator.comparingInt(Integer::parseInt));
+                    return Intersection;
                 }
 
                 @Override
-                public void Display() {
-                    System.out.println("Intersection: " + Intersection);
+                public void Display(ArrayList<String> intersection) {
+                    System.out.println("Intersection: " + intersection);
+                    Intersection.clear();
                 }
-
             }
             setIntersection SetIntersection = new setIntersection();
             // Create set:
                 createSet();
             // Implement intersection:
-                SetIntersection.intersectionOperation();
-                SetIntersection.Display();
+                SetIntersection.Display(SetIntersection.intersectionOperation());
         }
     // Set Difference:
         void setDiff(){
             SetDifferenceHelper setDifference = new SetDifferenceHelper() {
                 int option;
                 @Override
-                public void differenceOperation() {
+                public ArrayList<String> differenceOperation() {
                     System.out.println("Menu: ");
                     System.out.println("    1. Set Difference of A: Set(A - B)");
                     System.out.println("    2. Set Difference of A: Set(B - A)");
@@ -146,28 +153,36 @@ public class SetTheory {
                                     if (setA.contains(Element_of_thisSetB)){
                                         setA.remove(Element_of_thisSetB); // Set A - Set B
                                     }
-                                }break;
+                                } break;
                         case 2: for (String Element_of_thisSetA: setA){
                                     if (setB.contains(Element_of_thisSetA)){
                                         setB.remove(Element_of_thisSetA); // Set B - Set A
                                     }
-                                }break;
+                                } break;
+                    }
+                    if (option == 1){
+                        setA.sort(Comparator.comparingInt(Integer::parseInt));
+                        return setA;
+                    }else {
+                        setB.sort(Comparator.comparingInt(Integer::parseInt));
+                        return setB;
                     }
                 }
 
                 @Override
-                public void Display() {
+                public void Display(ArrayList<String> difference) {
                     if (option == 1){
-                        System.out.println("Set Difference of A: " + setA);
+                        System.out.println("Set Difference of A: " + difference);
                     }else if(option == 2){
-                        System.out.println("Set Difference of B: " + setB);
+                        System.out.println("Set Difference of B: " + difference);
                     }
+                    setA.clear();
+                    setB.clear();
                 }
             };
             // Create Set:
                 createSet();
-                setDifference.differenceOperation();
-                setDifference.Display();
+                setDifference.Display(setDifference.differenceOperation());
         }
 
     // Called Set Operation Method:
