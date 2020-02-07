@@ -13,7 +13,7 @@ import static java.lang.Integer.*;
 /**
  * This class is the main class all class instance of other class have been create and use.
  */
-// Hello
+
 public class Main {
 
     // Create an object of another class for use:(import class)
